@@ -33,6 +33,7 @@
     text-decoration: none;
     display: block;
     text-align: center;
+    padding: 5px 0;
     font-size: 2rem;
     border-radius: 27px;
     -webkit-box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.3);
@@ -54,15 +55,15 @@
 .white-circle {
     position: absolute;
     top: 0;
-    width: 110vw;
+    width: 100vw;
     height: 50px;
-    display: block;
+    overflow: hidden;
     // margin-top: -54px;
     // transform: translateY(100%);
     transform: rotate(180deg) translateY(90%);
 
     &.upsidedown {
-        transform: rotate(0deg) translateY(98%);
+        transform: rotate(0deg) translateY(88%);
         top: auto;
         bottom: 0;
     }

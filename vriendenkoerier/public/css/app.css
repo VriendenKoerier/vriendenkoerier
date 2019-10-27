@@ -32,6 +32,7 @@ body {
 
 main {
   display: block;
+  height: 100%;
 }
 
 /**
@@ -414,6 +415,7 @@ template {
   text-decoration: none;
   display: block;
   text-align: center;
+  padding: 5px 0;
   font-size: 2rem;
   border-radius: 27px;
   box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.3);
@@ -435,44 +437,53 @@ template {
 .white-circle {
   position: absolute;
   top: 0;
-  width: 110vw;
+  width: 100vw;
   height: 50px;
-  display: block;
+  overflow: hidden;
   -webkit-transform: rotate(180deg) translateY(90%);
           transform: rotate(180deg) translateY(90%);
 }
 
 .white-circle.upsidedown {
-  -webkit-transform: rotate(0deg) translateY(98%);
-          transform: rotate(0deg) translateY(98%);
+  -webkit-transform: rotate(0deg) translateY(88%);
+          transform: rotate(0deg) translateY(88%);
   top: auto;
   bottom: 0;
 }
 
 .main-content {
   background-color: #026473;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   position: relative;
   box-sizing: border-box;
+  display: block;
 }
 
 .create-heading {
   background-color: #ffffff;
   position: relative;
+  width: 100%;
+  padding-bottom: 10px;
+}
+
+.create-heading h4 {
+  margin-top: 10px;
 }
 
 .modal-form {
-  margin: 100px 25px 0 25px;
+  position: relative;
+  margin: 10px 25px 0 25px;
   border-radius: 25px;
   background-color: #ffffff;
   padding-top: 25px;
   padding-bottom: 40px;
+  padding-right: 10px;
+  padding-left: 10px;
   box-shadow: 0px 6px 15px 0px rgba(0, 0, 0, 0.4);
 }
 
 .modal-form form {
-  position: relative;
   display: block;
 }
 
@@ -485,6 +496,7 @@ template {
 .modal-form form label {
   border: none;
   display: block;
+  margin-bottom: 5px;
 }
 
 .modal-form form input {
@@ -492,6 +504,7 @@ template {
   border-color: #e6e6e6;
   display: block;
   font-size: 1rem;
+  width: 100%;
 }
 
 .modal-form form input ::-webkit-input-placeholder {
@@ -514,8 +527,35 @@ template {
   opacity: 0.9;
 }
 
+.modal-form form input :focus {
+  outline: none !important;
+  border-width: 0 0 1px 0;
+  border-color: #58b8a5;
+}
+
+.modal-form form textarea {
+  width: 100%;
+}
+
+.modal-form form textarea :focus {
+  outline: none !important;
+  border-width: 1px;
+  border-color: #58b8a5;
+}
+
+.button-form {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  -webkit-transform: translate(-50%, 50%);
+          transform: translate(-50%, 50%);
+  max-width: 80%;
+  border: none;
+}
+
 html {
   font-size: 16px;
+  width: 100%;
 }
 
 @media screen and (min-width: 900px) {
@@ -528,6 +568,11 @@ html {
   html {
     font-size: 20px;
   }
+}
+
+body,
+html {
+  height: 100%;
 }
 
 h1 {
