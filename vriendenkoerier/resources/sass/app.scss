@@ -3,6 +3,7 @@
 @import "variables/variables.scss";
 @import "pages/home-page.scss";
 @import "pages/create-page.scss";
+@import "pages/show-page.scss";
 
 html {
     font-size: 16px;
@@ -32,6 +33,11 @@ h1 {
 
 h4 {
     font-size: 1.7em;
+    margin-bottom: 0;
+}
+
+h6 {
+    // font-size: 1.7em;
     margin-bottom: 0;
 }
 

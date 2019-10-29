@@ -22,6 +22,10 @@
     <div class="modal-form">
         <form class="font-secondary" action="" method="post">
             <fieldset>
+                <label class="font-primary" for="">Title</label>
+                <input type="text">
+            </fieldset>
+            <fieldset>
                 <label class="font-primary" for="">Naam</label>
                 <input type="text">
             </fieldset>
@@ -50,6 +54,10 @@
             <fieldset>
                 <label class="font-primary" for="">Nummer</label>
                 <input type="text">
+            </fieldset>
+            <fieldset>
+                <label class="font-primary" for="">avg</label>
+                <input type="checkbox" name="" id="">
             </fieldset>
             <button class="button-primary button-form font-primary text-color-white" type="submit">Nieuw pakket</button>
         </form>
