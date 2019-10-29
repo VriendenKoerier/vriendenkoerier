@@ -11,6 +11,22 @@
 |
 */
 
+//short version
+Route::resource('/package', 'PackageController');
+
+//long version
+// Route::get('/projects', 'PagesController@index');
+// Route::get('/projects/create', "PagesController@create");
+// Route::post('/projects/create', "PagesController@store");
+// Route::get('/projects/{project}', "PagesController@show");
+// Route::get('/projects/{project}/edit', "PagesController@edit");
+// Route::patch('/projects/{project}', "PagesController@update");
+// Route::delete('/projects/{project}', "PagesController@destroy");
+
 Route::get('', function () {
     return view('welcome');
+});
+
+Route::get('/show', function () {
+    return view('show');
 });
