@@ -2,66 +2,176 @@
 
 @section('content')
 
-<div class="main-content">
-    <div class="create-heading">
-        <div class="contain">
+<section class="hero is-bold">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title is-family-primary text-color-gray">
+                Maak een nieuw pakket aan
+            </h1>
+            <h2 class="subtitle is-family-secondary">
+                Vul hier alle gegevens in van het pakket dat u wilt verzenden
+            </h2>
+        </div>
+    </div>
+</section>
 
-            <h4 class="font-primary text-color-gray-dark">Niew pakket verzenden</h4>
-            <p class="font-secondary text-color-gray-dark">Vul hier alle gegevens in van het pakket dat u wilt
-                verzenden.
-            </p>
+<section class="section background-primary">
+    <div class="container">
+        <div class="box max-width">
+            <form action="/package" method="post">
+                @csrf
+
+                <div class="field">
+                    <label class="label font-primary">*Titel:</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="Titel" name="title" value="{{old('title')}}"
+                            autocomplete="title" required>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label font-primary">*Naam:</label>
+                    <div class="control has-icons-left has-icons-right">
+                        <input class="input font-secondary" type="text" placeholder="Naam" name="name"
+                            value="{{old('name')}}" autocomplete="name" required>
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                            <i class="fas fa-check"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label font-primary">*Beschrijving:</label>
+                    <div class="control">
+                        <textarea class="textarea font-secondary" placeholder="Beschrijving" name="description"
+                            value="{{old('description')}}" autocomplete="description" required></textarea>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label font-primary">*Afmetingen in cm:</label>
+                    <div class="control">
+                        <input class="input font-secondary" type="number" placeholder="Hoogte" name="height"
+                            value="{{old('height')}}" autocomplete="height" required>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <input class="input font-secondary" type="number" placeholder="Breedte" name="width"
+                            value="{{old('width')}}" autocomplete="width" required>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <input class="input font-secondary" type="number" placeholder="Lengte" name="lenght"
+                            value="{{old('lenght')}}" autocomplete="lenght" required>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label font-primary">*Gewicht in kilogram</label>
+                    <div class="control">
+                        <input class="input font-secondary" type="number" placeholder="Gewicht" name="weight"
+                            value="{{old('weight')}}" autocomplete="weight" required>
+                    </div>
+                </div>
+
+                <div class="field file has-name">
+                    <label class="file-label">
+                        <input class="file-input" type="file" name="photo" value="{{old('photo')}}" autocomplete="photo"
+                            required>
+                        <span class="file-cta">
+                            <span class="file-icon">
+                                <i class="fas fa-upload"></i>
+                            </span>
+                            <span class="file-label font-primary">
+                                *Kies een bestand…
+                            </span>
+                        </span>
+                        <span class="file-name font-secondary">
+                            Foto van het product
+                        </span>
+                    </label>
+                </div>
+
+
+                <div class="field">
+                    <label class="label font-primary">*Email:</label>
+                    <div class="control has-icons-left has-icons-right">
+                        <input class="input font-secondary" type="email" placeholder="Email" name="email"
+                            value="{{old('email')}}" autocomplete="email" required>
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-envelope"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="field is-expanded">
+                        <div class="field has-addons">
+                            <p class="control">
+                                <a class="button is-static">
+                                    +31
+                                </a>
+                            </p>
+                            <p class="control is-expanded">
+                                <input class="input font-secondary" type="tel" placeholder="Jouw telefoon nummer"
+                                    name="phone_number" value="{{old('phone_number')}}" autocomplete="phone_number"
+                                    required>
+                            </p>
+                        </div>
+                        <p class="help">Vul de eerste nul niet in</p>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label font-primary">*Postcode locatie A:</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="Poscode A" name="postcode_a"
+                            value="{{old('postcode_a')}}" autocomplete="postcode_a" required>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label font-primary">*Postcode locatie B:</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="Postcode B" name="postcode_b"
+                            value="{{old('postcode_b')}}" autocomplete="postcode_b" required>
+                    </div>
+                </div>
+
+
+                <div class="field">
+                    <div class="control">
+                        <label class="checkbox">
+                            <input type="checkbox">
+                            I agree to the <a href="#">terms and conditions</a>
+                        </label>
+                    </div>
+                </div>
+
+
+                <button class=" button-primary background-primary-dark button-form text-color-white font-primary"
+                    type="submit">Submit</button>
 
         </div>
-        <svg class="white-circle upsidedown" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 120" class="">
-            <title>Combined Shape Copy 5</title>
-            <path d="M1280 94.705V0H0v94.791C186.553 110.79 405.425 120 639.5 120c234.494 0 453.73-9.243 640.5-25.295z"
-                fill="#FFF"></path>
-        </svg>
-
-    </div>
-    <div class="modal-form">
-        <form class="font-secondary" action="" method="post">
-            <fieldset>
-                <label class="font-primary" for="">Title</label>
-                <input type="text">
-            </fieldset>
-            <fieldset>
-                <label class="font-primary" for="">Naam</label>
-                <input type="text">
-            </fieldset>
-            <fieldset>
-                <label class="font-primary" for="">Afmetingen</label>
-                <input type="number" name="height" placeholder="hoogte">
-                <input type="number" name="width" placeholder="breette">
-                <input type="number" name="lenght" placeholder="lengte">
-            </fieldset>
-            <fieldset>
-                <label class="font-primary" for="">Gewicht</label>
-                <input type="number">
-            </fieldset>
-            <fieldset>
-                <label class="font-primary" for="">Foto's van het pakket</label>
-                <input type="file">
-            </fieldset>
-            <fieldset>
-                <label class="font-primary" for="">Beschrijving</label>
-                <textarea name="description" id=""></textarea>
-            </fieldset>
-            <fieldset>
-                <label class="font-primary" for="">Email</label>
-                <input type="text">
-            </fieldset>
-            <fieldset>
-                <label class="font-primary" for="">Nummer</label>
-                <input type="text">
-            </fieldset>
-            <fieldset>
-                <label class="font-primary" for="">avg</label>
-                <input type="checkbox" name="" id="">
-            </fieldset>
-            <button class="button-primary button-form font-primary text-color-white" type="submit">Nieuw pakket</button>
+        @if ($errors->any())
+        <div class="notification is-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{$error}}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
         </form>
     </div>
-</div>
+</section>
 
 @endsection
