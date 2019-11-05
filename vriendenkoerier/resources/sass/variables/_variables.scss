@@ -11,6 +11,39 @@ $color-gray-dark: #4b4b4b;
 
 $font-primary: "Baloo Bhai",
 cursive;
+
+.text-color-gray {
+    color: $color-gray-dark;
+}
+
+.is-family-primary {
+
+    font-family: "baloo Bhai",
+        cursive !important;
+    font-weight: 100;
+}
+
+
+.background-primary {
+    background-color: $color-primary-dark !important;
+}
+
+.background-primary-dark {
+    background-color: $color-primary;
+}
+
+.max-width {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.is-family-secondary {
+
+    font-family: "montserrat",
+        sans-serif !important;
+
+}
+
 $font-secondary: "Montserrat",
 sans-serif;
 
