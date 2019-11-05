@@ -385,6 +385,9 @@ template {
   height: 100vh;
   width: 100vw;
   padding-top: 50px;
+  max-height: 100vh;
+  max-width: 100vw;
+  overflow: hidden;
   position: relative;
   box-sizing: border-box;
 }
@@ -395,6 +398,7 @@ template {
   position: absolute;
   bottom: 0;
   padding-bottom: 50px;
+  width: 100%;
 }
 
 .panorama-image {
@@ -472,6 +476,7 @@ template {
 }
 
 .modal-form {
+  max-width: 550px;
   position: relative;
   margin: 10px 25px 0 25px;
   border-radius: 25px;
@@ -481,6 +486,12 @@ template {
   padding-right: 10px;
   padding-left: 10px;
   box-shadow: 0px 6px 15px 0px rgba(0, 0, 0, 0.4);
+}
+
+@media screen and (min-device-width: 575px) {
+  .modal-form {
+    margin: -15px auto 0 auto;
+  }
 }
 
 .modal-form form {
@@ -585,6 +596,10 @@ h1 {
 
 h4 {
   font-size: 1.7em;
+  margin-bottom: 0;
+}
+
+h6 {
   margin-bottom: 0;
 }
 
