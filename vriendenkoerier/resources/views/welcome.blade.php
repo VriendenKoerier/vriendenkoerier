@@ -45,7 +45,7 @@
                 <p class="font-secondary text-color-primary">
                     Vul hier alle gegevens in van het pakket dat u wilt verzenden.
                 </p>
-                <a class="button-primary font-primary text-color-white" href="/create">Nieuw pakket</a>
+                <a class="button-primary font-primary text-color-white" href="/package/create">Nieuw pakket</a>
             </div>
         </div>
     </div>
