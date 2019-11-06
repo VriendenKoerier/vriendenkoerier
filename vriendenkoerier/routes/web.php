@@ -11,6 +11,11 @@
 |
 */
 
+use Illuminate\Http\Request;
+
+
+Route::get('/edit/{package}', 'PackageController@SignedURL')->name('edit');
+
 //short version
 Route::resource('/package', 'PackageController');
 
