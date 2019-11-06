@@ -27,7 +27,7 @@ class CreatePackagesTable extends Migration
             $table->string('email', 255);
             $table->string('phone_number', 20)->nullable();
             $table->string('postcode_a', 7);
-            $table->string('psotcode_b', 7);
+            $table->string('postcode_b', 7);
             $table->boolean('avg_confirmed');
             $table->string('show_hash');
             $table->timestamps();

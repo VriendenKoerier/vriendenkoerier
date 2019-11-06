@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Package;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+
 
 class PackageController extends Controller
 {
@@ -14,7 +16,7 @@ class PackageController extends Controller
      */
     public function index()
     {
-
+        return redirect('/package/create');
     }
 
     /**
@@ -43,14 +45,18 @@ class PackageController extends Controller
             'width' => ['required', 'integer'],
             'length' => ['required', 'integer'],
             'weight' => ['required', 'integer'],
-            'photo' => ['required', 'file'],
+            'photo' => ['required', 'image', 'mimes:jpeg,png,jpg,giv,svg', 'max:2048'],
             'email' => ['required', 'e-mail'],
-            'phone_number' => ['min:10', 'max:20'],
+            'phone_number' => ['min:9', 'max:20'],
             'postcode_a' => ['required', 'string', 'min:6', 'max:7'],
             'postcode_b' => ['required', 'string', 'min:6', 'max:7'],
             'avg_confirmed' => ['required']
         ]);
 
+        $imageName = time().'_'.$request->photo->extension();
+        $request->photo->move(public_path('images'), $imageName);
+
+        //spaties, white spaces, tabs etc allemaal weghalen
         $postA = preg_replace('~\x{00a0}~','',$request->postcode_a);
         $postB = preg_replace('~\x{00a0}~','',$request->postcode_b);
 
@@ -64,19 +70,19 @@ class PackageController extends Controller
             'width' => $request->width,
             'length' => $request->length,
             'weight' => $request->weight,
-            'photo' => 'path hier',
+            'photo' => $imageName,
             'email' => $request->email,
             'phone_number' => $request->phone_number,
             'postcode_a' => $postA,
             'postcode_b' => $postB,
-            'avg_confirmed' => $request->avg_confirmed,
+            'avg_confirmed' => true,
             'show_hash' => Hash::make($request->title)
         ];
 
-        Package::Create($package);
+        $pk = Package::Create($package);
 
         //return naar de package show pagina
-        return redirect('/');
+        return redirect('/package/'.$pk->id);
     }
 
     /**
@@ -87,7 +93,7 @@ class PackageController extends Controller
      */
     public function show(Package $package)
     {
-        //
+        return view('show');
     }
 
     /**
