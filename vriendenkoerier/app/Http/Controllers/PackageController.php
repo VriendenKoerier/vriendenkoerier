@@ -60,8 +60,6 @@ class PackageController extends Controller
         $postA = preg_replace('~\x{00a0}~','',$request->postcode_a);
         $postB = preg_replace('~\x{00a0}~','',$request->postcode_b);
 
-        //Photo hier opslaan en path terug geven
-
         $package = [
             'title' => $request->title,
             'name' => $request->name,
