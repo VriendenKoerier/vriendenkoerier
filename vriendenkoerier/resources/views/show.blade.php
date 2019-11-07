@@ -6,10 +6,10 @@
     <div class="hero-body">
         <div class="container">
             <h1 class="title is-family-primary text-color-gray">
-                Maak een nieuw pakket aan
+                {{$package->title}}
             </h1>
             <h2 class="subtitle is-family-secondary">
-                Vul hier alle gegevens in van het pakket dat u wilt verzenden
+                Wilt u dit pakket verzenden?
             </h2>
         </div>
     </div>
@@ -19,14 +19,10 @@
     <div class="container">
         <div class="box max-width">
             <section class="section">
-                <h2 class="font-primary text-color-primary">Title</h2>
-                <h5 class="font-primary text-color-gray-dark">Naam</h5>
+                <h2 class="font-primary text-color-primary">{{$package->title}}</h2>
+                <h5 class="font-primary text-color-gray-dark">{{$package->name}}</h5>
                 <h5 class="font-primary text-color-gray-dark">Beschrijving</h5>
-                <p class="font-secondary text-color-gray-dark">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Ipsum,
-                    sit harum nobis animi suscipit modi natus sed vero mollitia ex unde minus quas, molestiae fuga
-                    quidem
-                    voluptatibus architecto expedita quia!</p>
+                <p class="font-secondary text-color-gray-dark">{{$package->description}}</p>
                 <table class="table is-bordered">
                     <thead>
                         <tr>
@@ -37,9 +33,9 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <th title="hoogte">10</th>
-                            <th title="breedte">10</th>
-                            <th title="lente">10</th>
+                            <th title="hoogte">{{$package->hight}}</th>
+                            <th title="breedte">{{$package->width}}</th>
+                            <th title="lente">{{$package->lenght}}</th>
                         </tr>
                     </tbody>
                 </table>
@@ -47,11 +43,11 @@
                     <img src="https://bulma.io/images/placeholders/256x256.png">
                 </figure>
                 <h5 class="font-primary text-color-gray-dark">Gewicht in KG</h5>
-                <p>10</p>
+                <p>{{$package->weight}}</p>
                 <h5 class="font-primary text-color-gray-dark">Email</h5>
-                <p>email@email.nl</p>
+                <p>{{$package->email}}</p>
                 <h5 class="font-primary text-color-gray-dark">Telefoon nummer</h5>
-                <p>+31 6 12345678</p>
+                <p>{{$package->phone_number}}</p>
             </section>
             <div class="buttons has-addons is-centered">
                 {{-- <p class="control"> --}}
@@ -65,14 +61,14 @@
                 <a href="https://twitter.com/home?status=https://beta.vriendenkoerier.nl/package/{{$package->id}}"
                     class="button is-primary">
                     <span class="icon"><i class="fab fa-twitter"></i></span>
-                    <span>share</span>
+                    <span>twitter</span>
                 </a>
                 {{-- </p> --}}
                 {{-- <p class="control"> --}}
                 <a href="mailto:info@example.com?&subject=&body=https://beta.vriendenkoerier.nl/package/{{$package->id}}"
                     class="button is-primary">
                     <span class="icon"><i class="far fa-envelope"></i></span>
-                    <span>share</span>
+                    <span>email</span>
                 </a>
                 {{-- </p> --}}
             </div>
