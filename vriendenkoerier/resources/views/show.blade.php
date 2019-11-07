@@ -40,7 +40,7 @@
                     </tbody>
                 </table>
                 <figure class="image is-squear">
-                    <img src="public/image/{{$package->photo}}">
+                    <img src="{{public_path('images').'/'.$package->photo}}">
                 </figure>
                 <h5 class="font-primary text-color-gray-dark">Gewicht in KG</h5>
                 <p>{{$package->weight}}</p>
