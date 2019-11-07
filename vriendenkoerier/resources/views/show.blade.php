@@ -33,14 +33,14 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <th title="hoogte">{{$package->hight}}</th>
+                            <th title="hoogte">{{$package->height}}</th>
                             <th title="breedte">{{$package->width}}</th>
-                            <th title="lente">{{$package->lenght}}</th>
+                            <th title="lente">{{$package->length}}</th>
                         </tr>
                     </tbody>
                 </table>
                 <figure class="image is-squear">
-                    <img src="https://bulma.io/images/placeholders/256x256.png">
+                    <img src="public/image/{{$package->photo}}">
                 </figure>
                 <h5 class="font-primary text-color-gray-dark">Gewicht in KG</h5>
                 <p>{{$package->weight}}</p>
