@@ -2,47 +2,83 @@
 
 @section('content')
 
-<div class="main-content">
-    <div class="create-heading">
-        <div class="contain">
+<section class="hero is-bold">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title is-family-primary text-color-gray">
+                {{$package->title}}
+            </h1>
+            <h2 class="subtitle is-family-secondary">
+                Wilt u dit pakket verzenden?
+            </h2>
+        </div>
+    </div>
+</section>
 
-            <h4 class="font-primary text-color-gray-dark">Niew pakket verzenden</h4>
-            <p class="font-secondary text-color-gray-dark">Vul hier alle gegevens in van het pakket dat u wilt
-                verzenden.
-            </p>
+<section class="section background-primary">
+    <div class="container">
+        <div class="box max-width">
+            <section class="section">
+                <h2 class="font-primary text-color-primary">{{$package->title}}</h2>
+                <h5 class="font-primary text-color-gray-dark">{{$package->name}}</h5>
+                <h5 class="font-primary text-color-gray-dark">Beschrijving</h5>
+                <p class="font-secondary text-color-gray-dark">{{$package->description}}</p>
+                <table class="table is-bordered">
+                    <thead>
+                        <tr>
+                            <th title="hoogte">Hoogte</th>
+                            <th title="breedte">Breedte</th>
+                            <th title="lengte">Lengte</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th title="hoogte">{{$package->height}}</th>
+                            <th title="breedte">{{$package->width}}</th>
+                            <th title="lente">{{$package->length}}</th>
+                        </tr>
+                    </tbody>
+                </table>
+                <figure class="image is-squear">
+                    <img src="{{public_path('images').'/'.$package->photo}}">
+                </figure>
+                <h5 class="font-primary text-color-gray-dark">Gewicht in KG</h5>
+                <p>{{$package->weight}}</p>
+                <h5 class="font-primary text-color-gray-dark">Email</h5>
+                <p>{{$package->email}}</p>
+                <h5 class="font-primary text-color-gray-dark">Telefoon nummer</h5>
+                <p>{{$package->phone_number}}</p>
+            </section>
+            <div class="buttons has-addons is-centered">
+                {{-- <p class="control"> --}}
+                <a target="_blank"
+                    href="https://www.facebook.com/sharer/sharer.php?u=https://beta.vriendenkoerier.nl/package/{{$package->id}}"
+                    class="button is-primary">
+                    <span class="icon"><i class="fab fa-facebook-f"></i></span>
+                    <span>facebook</span>
+                </a>
+                {{-- </p> --}}
+                {{-- <p class="control"> --}}
+                <a target="_blank"
+                    href="https://twitter.com/home?status=https://beta.vriendenkoerier.nl/package/{{$package->id}}"
+                    class="button is-primary">
+                    <span class="icon"><i class="fab fa-twitter"></i></span>
+                    <span>twitter</span>
+                </a>
+                {{-- </p> --}}
+                {{-- <p class="control"> --}}
+                <a target="_blank"
+                    href="mailto:info@example.com?&subject=&body=https://beta.vriendenkoerier.nl/package/{{$package->id}}"
+                    class="button is-primary">
+                    <span class="icon"><i class="far fa-envelope"></i></span>
+                    <span>email</span>
+                </a>
+                {{-- </p> --}}
+            </div>
 
         </div>
-        <svg class="white-circle upsidedown" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 120" class="">
-            <title>Combined Shape Copy 5</title>
-            <path d="M1280 94.705V0H0v94.791C186.553 110.79 405.425 120 639.5 120c234.494 0 453.73-9.243 640.5-25.295z"
-                fill="#FFF"></path>
-        </svg>
+    </div>
+    </div>
+</section>
 
-    </div>
-    <div class="modal-form">
-        <h4 class="font-primary text-color-primary">Title is a long line with a lot of text</h4>
-        <h5 class="font-primary text-color-gray-dark">Description</h5>
-        <p class="font-secondary text-color-gray-dark">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum,
-            sit harum nobis animi suscipit modi natus sed vero mollitia ex unde minus quas, molestiae fuga quidem
-            voluptatibus architecto expedita quia!</p>
-        <ul>
-            <li>
-                <h5 class="font-primary text-color-gray-dark">Hoogte</h6>
-                    <p class="font-primary text-color-gray-dark">cm</p>
-            </li>
-            <li>
-                <h5 class="font-primary text-color-gray-dark">Breette</h5>
-                <p class="font-primary text-color-gray-dark">cm</p>
-            </li>
-            <li>
-                <h5 class="font-primary text-color-gray-dark">Lengte</h5>
-                <p class="font-primary text-color-gray-dark">cm</p>
-            </li>
-        </ul>
-        <img src="" alt="foto-van-product">
-        <p class="gewicht">gewicht</p>
-        <p class="email">emial</p>
-        <p class="nummer">nummers</p>
-    </div>
-</div>
 @endsection

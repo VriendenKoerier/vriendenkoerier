@@ -380,6 +380,32 @@ template {
   display: none;
 }
 
+.text-color-gray {
+  color: #4b4b4b;
+}
+
+.is-family-primary {
+  font-family: "baloo Bhai", cursive !important;
+  font-weight: 100;
+}
+
+.background-primary {
+  background-color: #026473 !important;
+}
+
+.background-primary-dark {
+  background-color: #58b8a5;
+}
+
+.max-width {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.is-family-secondary {
+  font-family: "montserrat", sans-serif !important;
+}
+
 .panorama {
   background-color: #026473;
   height: 100vh;
@@ -560,7 +586,8 @@ template {
   left: 50%;
   -webkit-transform: translate(-50%, 50%);
           transform: translate(-50%, 50%);
-  max-width: 80%;
+  width: 60%;
+  max-width: 600px;
   border: none;
 }
 
@@ -579,32 +606,6 @@ html {
   html {
     font-size: 20px;
   }
-}
-
-body,
-html {
-  height: 100%;
-}
-
-h1 {
-  font-size: 4em;
-  margin: 0;
-  line-height: 3.5rem;
-  letter-spacing: 0.2rem;
-  font-weight: normal;
-}
-
-h4 {
-  font-size: 1.7em;
-  margin-bottom: 0;
-}
-
-h6 {
-  margin-bottom: 0;
-}
-
-p {
-  font-size: 1em;
 }
 
 .font-primary {

@@ -159,15 +159,16 @@
                 <button class=" button-primary background-primary-dark button-form text-color-white font-primary"
                     type="submit">Submit</button>
 
-        @if ($errors->any())
-        <div class="notification is-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                <li>{{$error}}</li>
-                @endforeach
-            </ul>
+                @if ($errors->any())
+                <div class="notification is-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{$error}}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
         </div>
-        @endif
         </form>
     </div>
     </div>

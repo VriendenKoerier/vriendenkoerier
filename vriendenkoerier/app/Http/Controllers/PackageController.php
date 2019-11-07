@@ -93,13 +93,13 @@ class PackageController extends Controller
         $pk = Package::Create($package);
 
         //mail versturen
-        $data = ['name' => $pk->name, 'body' => $pk->show_hash];
-        Mail::send('mail', $data, function ($message)
-        {
-            $message->from('info@vriendenkoerier.nl', 'Vrienden Koerier');
-            $message->subject('Uw pakket link');
-            $message->to('info@vriendenkoerier.nl');
-        });
+        // $data = ['name' => $pk->name, 'body' => $pk->show_hash];
+        // Mail::send('mail', $data, function ($message)
+        // {
+        //     $message->from('info@vriendenkoerier.nl', 'Vrienden Koerier');
+        //     $message->subject('Uw pakket link');
+        //     $message->to('info@vriendenkoerier.nl');
+        // });
 
         //return naar de package show pagina
         return redirect('/package/'.$pk->id);
