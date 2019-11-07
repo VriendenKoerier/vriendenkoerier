@@ -18,7 +18,7 @@
 <section class="section background-primary">
     <div class="container">
         <div class="box max-width">
-            <form action="/package" method="post">
+            <form action="/package" method="post" enctype="multipart/form-data">
                 @csrf
 
                 <div class="field">
@@ -47,7 +47,7 @@
                     <label class="label font-primary">*Beschrijving:</label>
                     <div class="control">
                         <textarea class="textarea font-secondary" placeholder="Beschrijving" name="description"
-                            value="{{old('description')}}" autocomplete="description" required></textarea>
+                            autocomplete="description" required>{{old('description')}}</textarea>
                     </div>
                 </div>
 
@@ -66,8 +66,8 @@
                 </div>
                 <div class="field">
                     <div class="control">
-                        <input class="input font-secondary" type="number" placeholder="Lengte" name="lenght"
-                            value="{{old('lenght')}}" autocomplete="lenght" required>
+                        <input class="input font-secondary" type="number" placeholder="Lengte" name="length"
+                            value="{{old('length')}}" autocomplete="length" required>
                     </div>
                 </div>
 
@@ -81,8 +81,7 @@
 
                 <div class="field file has-name">
                     <label class="file-label">
-                        <input class="file-input" type="file" name="photo" value="{{old('photo')}}" autocomplete="photo"
-                            required>
+                        <input class="file-input" type="file" name="photo" autocomplete="photo" required>
                         <span class="file-cta">
                             <span class="file-icon">
                                 <i class="fas fa-upload"></i>
@@ -113,6 +112,7 @@
                 </div>
 
                 <div class="field">
+                        <label class="label font-primary">Telefoonnummer:</label>
                     <div class="field is-expanded">
                         <div class="field has-addons">
                             <p class="control">
@@ -122,8 +122,7 @@
                             </p>
                             <p class="control is-expanded">
                                 <input class="input font-secondary" type="tel" placeholder="Jouw telefoon nummer"
-                                    name="phone_number" value="{{old('phone_number')}}" autocomplete="phone_number"
-                                    required>
+                                    name="phone_number" value="{{old('phone_number')}}" autocomplete="phone_number">
                             </p>
                         </div>
                         <p class="help">Vul de eerste nul niet in</p>
@@ -150,7 +149,7 @@
                 <div class="field">
                     <div class="control">
                         <label class="checkbox">
-                            <input type="checkbox">
+                            <input name="avg_confirmed" type="checkbox" value="true">
                             I agree to the <a href="#">terms and conditions</a>
                         </label>
                     </div>
@@ -160,7 +159,6 @@
                 <button class=" button-primary background-primary-dark button-form text-color-white font-primary"
                     type="submit">Submit</button>
 
-        </div>
         @if ($errors->any())
         <div class="notification is-danger">
             <ul>
@@ -171,6 +169,7 @@
         </div>
         @endif
         </form>
+    </div>
     </div>
 </section>
 
