@@ -11,6 +11,11 @@
 |
 */
 
+use Illuminate\Http\Request;
+
+
+Route::get('/edit/{package}', 'PackageController@SignedURL')->name('edit');
+
 //short version
 Route::resource('/package', 'PackageController');
 
@@ -27,6 +32,7 @@ Route::get('', function () {
     return view('welcome');
 });
 
-Route::get('/show', function () {
+Route::get('/show', function ()
+{
     return view('show');
 });

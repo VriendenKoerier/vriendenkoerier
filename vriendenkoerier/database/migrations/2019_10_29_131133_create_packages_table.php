@@ -18,14 +18,16 @@ class CreatePackagesTable extends Migration
             $table->bigIncrements('id');
             $table->string('title', 50);
             $table->string('name', 50);
+            $table->text('description');
             $table->integer('height')->unsigned();
             $table->integer('width')->unsigned();
             $table->integer('length')->unsigned();
             $table->integer('weight')->unsigned();
             $table->string('photo', 255);
-            $table->text('description');
             $table->string('email', 255);
             $table->string('phone_number', 20)->nullable();
+            $table->string('postcode_a', 7);
+            $table->string('postcode_b', 7);
             $table->boolean('avg_confirmed');
             $table->string('show_hash');
             $table->timestamps();
