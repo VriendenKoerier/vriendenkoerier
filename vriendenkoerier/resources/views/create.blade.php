@@ -66,8 +66,8 @@
                 </div>
                 <div class="field">
                     <div class="control">
-                        <input class="input font-secondary" type="number" placeholder="Lengte" name="lenght"
-                            value="{{old('lenght')}}" autocomplete="lenght" required>
+                        <input class="input font-secondary" type="number" placeholder="Lengte" name="length"
+                            value="{{old('length')}}" autocomplete="length" required>
                     </div>
                 </div>
 
@@ -160,16 +160,16 @@
                 <button class=" button-primary background-primary-dark button-form text-color-white font-primary"
                     type="submit">Submit</button>
 
+                @if ($errors->any())
+                <div class="notification is-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{$error}}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
         </div>
-        @if ($errors->any())
-        <div class="notification is-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                <li>{{$error}}</li>
-                @endforeach
-            </ul>
-        </div>
-        @endif
         </form>
     </div>
 </section>
