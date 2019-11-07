@@ -51,21 +51,24 @@
             </section>
             <div class="buttons has-addons is-centered">
                 {{-- <p class="control"> --}}
-                <a href="https://www.facebook.com/sharer/sharer.php?u=https://beta.vriendenkoerier.nl/package/{{$package->id}}"
+                <a target="_blank"
+                    href="https://www.facebook.com/sharer/sharer.php?u=https://beta.vriendenkoerier.nl/package/{{$package->id}}"
                     class="button is-primary">
                     <span class="icon"><i class="fab fa-facebook-f"></i></span>
                     <span>facebook</span>
                 </a>
                 {{-- </p> --}}
                 {{-- <p class="control"> --}}
-                <a href="https://twitter.com/home?status=https://beta.vriendenkoerier.nl/package/{{$package->id}}"
+                <a target="_blank"
+                    href="https://twitter.com/home?status=https://beta.vriendenkoerier.nl/package/{{$package->id}}"
                     class="button is-primary">
                     <span class="icon"><i class="fab fa-twitter"></i></span>
                     <span>twitter</span>
                 </a>
                 {{-- </p> --}}
                 {{-- <p class="control"> --}}
-                <a href="mailto:info@example.com?&subject=&body=https://beta.vriendenkoerier.nl/package/{{$package->id}}"
+                <a target="_blank"
+                    href="mailto:info@example.com?&subject=&body=https://beta.vriendenkoerier.nl/package/{{$package->id}}"
                     class="button is-primary">
                     <span class="icon"><i class="far fa-envelope"></i></span>
                     <span>email</span>
