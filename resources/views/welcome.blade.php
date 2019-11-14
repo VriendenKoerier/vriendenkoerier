@@ -25,7 +25,7 @@
             <div class="panorama-heading">
                 <h1 class="font-primary text-color-white">Vrienden <br> Koerier</h1>
                 <p class="font-secondary text-color-white">
-                    Verzend pakketen gratis en milieu- vriendelijk bla bla bla
+                    Verzend pakketen gratis en milieu- vriendelijk
                 </p>
             </div>
         </div>
@@ -43,7 +43,7 @@
                     Nieuw pakket verzenden
                 </h4>
                 <p class="font-secondary text-color-primary">
-                    Vul hier alle gegevens in van het pakket dat u wilt verzenden.
+                    Klik op de knop hieronder om een nieuw pakket aan te maken.
                 </p>
                 <a class="button-primary font-primary text-color-white" href="/package/create">Nieuw pakket</a>
             </div>

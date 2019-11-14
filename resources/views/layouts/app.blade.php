@@ -30,7 +30,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <!-- Title -->
-        <title>{{ config('app.name', 'Vrienden Koerier') }}</title>
+        <title>Vrienden Koerier</title>
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
