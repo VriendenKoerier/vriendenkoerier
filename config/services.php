@@ -15,10 +15,13 @@ return [
     */
 
     'mailgun' => [
-        'domain' => env('MAILGUN_DOMAIN'),
-        'secret' => env('MAILGUN_SECRET'),
+        'domain' => env('sandboxf47a172b5bf64307bf3fa7ec29620ef4.mailgun.org'),
+        'secret' => env('c4ea47b6e13c70d104b7eb50df1d4142-f696beb4-8cb5c4ff'),
         'endpoint' => env('MAILGUN_ENDPOINT', 'smtp.mailgun.org'),
     ],
+
+    // 'domain' => env('MAILGUN_DOMAIN'),
+    //     'secret' => env('MAILGUN_SECRET'),
 
     'postmark' => [
         'token' => env('POSTMARK_TOKEN'),
