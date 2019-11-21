@@ -11,7 +11,6 @@
     <br />
     <a href="https://github.com/VriendenKoerier/vriendenkoerier"><strong>Bekijk het project »</strong></a>
     <br />
-    <br />
     <a href="https://beta.vriendenkoerier.nl">Bekijk de beta!</a>
     ·
   </p>
