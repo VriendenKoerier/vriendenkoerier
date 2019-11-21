@@ -66,8 +66,9 @@ class PackageController extends Controller
             'avg_confirmed' => ['required']
         ]);
 
+        //IMAGE
         $imageName = time().'_'.$request->photo->extension();
-        $request->photo->move(public_path('images'), $imageName);
+        // $request->photo->move(public_path('images'), $imageName);
 
         //spaties, white spaces, tabs etc allemaal weghalen
         $postA = preg_replace('~\x{00a0}~','',$request->postcode_a);
@@ -93,13 +94,14 @@ class PackageController extends Controller
         $pk = Package::Create($package);
 
         //mail versturen
-        // $data = ['name' => $pk->name, 'body' => $pk->show_hash];
-        // Mail::send('mail', $data, function ($message)
-        // {
-        //     $message->from('info@vriendenkoerier.nl', 'Vrienden Koerier');
-        //     $message->subject('Uw pakket link');
-        //     $message->to('info@vriendenkoerier.nl');
-        // });
+        $data = ['name' => $pk->name, 'body' => $pk->show_hash, 'email' => $pk->email];
+
+        Mail::send('mail', $data, function ($message) use($pk)
+        {
+            $message->from('automail@vriendenkoerier.nl', 'Vrienden Koerier');
+            $message->subject('Uw pakket link');
+            $message->to($pk->email);
+        });
 
         //return naar de package show pagina
         return redirect('/package/'.$pk->id);
