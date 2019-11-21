@@ -67,8 +67,8 @@ class PackageController extends Controller
         ]);
 
         //IMAGE
-        $imageName = time().'_'.$request->photo->extension();
-        // $request->photo->move(public_path('images'), $imageName);
+        $imageName = time().'.'.$request->photo->extension();
+        $request->photo->move(public_path('images'), $imageName);
 
         //spaties, white spaces, tabs etc allemaal weghalen
         $postA = preg_replace('~\x{00a0}~','',$request->postcode_a);
