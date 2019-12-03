@@ -32,9 +32,12 @@ Route::get('', function () {
     return view('welcome');
 });
 
-Route::get('/show', function ()
-{
+Route::get('/show', function () {
     return view('show');
+});
+
+Route::get('/test', function () {
+    return view('homePage');
 });
 
 Auth::routes();
