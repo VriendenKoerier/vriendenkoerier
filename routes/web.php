@@ -14,10 +14,10 @@
 use Illuminate\Http\Request;
 
 
-Route::get('/edit/{package}', 'PackageController@SignedURL')->name('edit');
+// Route::get('/edit/{package}', 'PackageController@SignedURL')->name('edit');
 
-//short version
-Route::resource('/package', 'PackageController');
+// //short version
+// Route::resource('/package', 'PackageController');
 
 //long version
 // Route::get('/projects', 'PagesController@index');
@@ -29,17 +29,17 @@ Route::resource('/package', 'PackageController');
 // Route::delete('/projects/{project}', "PagesController@destroy");
 
 Route::get('', function () {
-    return view('welcome');
-});
-
-Route::get('/show', function () {
-    return view('show');
-});
-
-Route::get('/test', function () {
     return view('homePage');
 });
 
-Auth::routes();
+// Route::get('/show', function () {
+//     return view('show');
+// });
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/test', function () {
+//     return view('homePage');
+// });
+
+// Auth::routes();
+
+// Route::get('/home', 'HomeController@index')->name('home');
