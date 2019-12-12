@@ -26,6 +26,8 @@
     "dependencies": {
         "bootstrap-vue": "^2.1.0",
         "buefy": "^0.8.7",
-        "vue": "^2.6.10"
+        "vue": "^2.6.10",
+        "vue-axios": "^2.1.5",
+        "vue-router": "^3.1.3"
     }
 }
