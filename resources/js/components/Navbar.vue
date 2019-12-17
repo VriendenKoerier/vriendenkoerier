@@ -1,7 +1,7 @@
 <template>
     <div>
                 <b-navbar toggleable="lg" type="dark" variant="primary">
-                    <b-navbar-brand href="#">Vrienden Koerier</b-navbar-brand>
+                    <b-navbar-brand to="/">Vrienden Koerier</b-navbar-brand>
 
                     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
@@ -10,15 +10,11 @@
                             <!-- use router-link component for navigation. -->
                             <!-- specify the link by passing the `to` prop. -->
                             <!-- `<router-link>` will be rendered as an `<a>` tag by default -->
-                            <b-nav-item href="#">
-                                <router-link to="/">Pakket</router-link>
+                            <b-nav-item to="/">Pakketten
                             </b-nav-item>
-                            <b-nav-item href="#">
-                                <router-link to="/check">Pagina 1</router-link>
+                            <b-nav-item to="check">Aanmaken
                             </b-nav-item>
-                            <b-nav-item href="#">
-                                <router-link to="/login">Pagina 2</router-link>
-                            </b-nav-item>
+
                         </b-navbar-nav>
 
                         <!-- Right aligned nav items -->
