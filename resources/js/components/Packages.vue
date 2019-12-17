@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    <p>hallo</p>
     <div class="row justify-content-center">
       <div v-for="packet in packagesSend" v-bind:key="packet.id">
         <ul>
