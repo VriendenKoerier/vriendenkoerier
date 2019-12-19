@@ -1,83 +1,95 @@
 <template>
+  <div>
     <div>
-        <table>
-            <tr>
-                <th>id</th>
-                <th>name</th>
-                <th>email</th>
-            </tr>
-            <tr>
-                <td>{{ this.user_data.id }}</td>
-                <td>{{ this.user_data.name }}</td>
-                <td>{{ this.user_data.email }}</td>
-            </tr>
-        </table>
+      <!-- <b-alert v-model="email">{{}}</b-alert> -->
+      <b-form inline>
+        <label class="sr-only" for="email">Email</label>
+        <b-input id="email" v-model="email" class="mb-2 mr-sm-2 mb-sm-0" placeholder="Jane Doe"></b-input>
+
+        <label class="sr-only" for="password">Password</label>
+        <b-input
+          id="password"
+          v-model="password"
+          class="mb-2 mr-sm-2 mb-sm-0"
+          type="password"
+          placeholder="Jane Doe"
+        ></b-input>
+
+        <b-form-checkbox
+          v-model="remember_me"
+          for="remember_me"
+          class="mb-2 mr-sm-2 mb-sm-0"
+        >Remember me</b-form-checkbox>
+
+        <b-button v-on:click="get_data" variant="primary">Save</b-button>
+      </b-form>
     </div>
+  </div>
 </template>
 
 <script>
+// var Vue = require("vue");
 // import Vue from "vue";
 // import axios from "axios";
 // Vue.use(axios);
 export default {
-    name: "app",
-    data: function() {
-        return {
-            access_token: "",
-            user_data: ""
-        };
-    },
-    methods: {
-        get_data: function() {
-            axios
-                .post("https://api.vriendenkoerier.nl/api/auth/login", {
-                    client_id: 1,
-                    client_secret: "HxqJqYFwf4FwiG4ZBX2lZXKcIWalywQ80oAuS831",
-                    grant_type: "password",
-                    email: "test123456789@gmail.com",
-                    password: "geheim1234",
-                    remember_me: 1,
-                    scope: "*"
-                })
-                .then(response => {
-                    this.access_token = response["data"]["access_token"];
-                    this.get_users_data();
-                })
-                .catch(response => {
-                    console.log(response.response.data);
-                });
-        },
-        get_users_data: function() {
-            axios
-                .get("https://api.vriendenkoerier.nl/api/auth/user", {
-                    headers: {
-                        Authorization: "Bearer " + this.access_token
-                    }
-                })
-                .then(response => {
-                    console.log("werlt 2");
-                    this.user_data = response["data"];
-                    return this.user_data;
-                })
-                .catch(response => {
-                    console.log("werktniet 2");
-                    console.log(response.response.data);
-                });
-        }
-    },
-    mounted() {
-        this.get_data();
+  name: "app",
+  data() {
+    return {
+      access_token: "",
+      user_data: "",
+      email: "",
+      password: "",
+      remember_me: ""
+    };
+  },
+  methods: {
+    get_data: function() {
+      axios
+        .post("https://api.vriendenkoerier.nl/api/auth/login", {
+          client_id: 1,
+          client_secret: "HxqJqYFwf4FwiG4ZBX2lZXKcIWalywQ80oAuS831",
+          grant_type: "password",
+          email: this.email,
+          password: this.password,
+          remember_me: this.remember_me,
+          scope: "*"
+        })
+        .then(response => {
+          this.access_token = response["data"]["access_token"];
+          this.$cookie.set("token", this.access_token, 7);
+          //   localStorage.setToken("acces_token", "fgrrwgwtgrggrrtg");
+          // console.log(localStorage.getItem("acces_token"));
+          //router.push({ name: "profile" });
+        })
+        .catch(response => {
+          console.log("KANKER KAPOT");
+        });
     }
+  },
+  mounted() {
+    //Gekke cookcie uit elkaar halen g
+    var value = "; " + document.cookie;
+    var parts = value.split("; " + "token" + "=");
+    if (parts.length == 2) {
+      console.log(
+        parts
+          .pop()
+          .split(";")
+          .shift()
+      );
+      //doorroute naar profile
+    }
+  }
 };
 </script>
 
 <style>
 #app {
-    font-family: "Avenir", Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
 }
 </style>

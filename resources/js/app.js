@@ -9,6 +9,9 @@ require('./bootstrap');
 import Vue from 'vue'
 import axios from 'axios';
 import VueRouter from 'vue-router';
+import VueCookie from 'vue-cookie';
+// Tell Vue to use the plugin
+Vue.use(VueCookie);
 
 
 Vue.use(VueRouter);
@@ -37,10 +40,12 @@ Vue.use(BootstrapVue) // Telling Vue to use this in whole application
 Vue.component('packages', require('./components/Packages.vue').default);
 Vue.component('check', require('./components/Check.vue').default);
 Vue.component('login', require('./components/Login.vue').default);
+Vue.component('profile', require('./components/Profile.vue').default);
 
 import packages from './components/Packages.vue';
 import check from './components/Check.vue';
 import login from './components/Login.vue';
+import profile from './components/Profile.vue';
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -66,40 +71,43 @@ const router = new VueRouter({
     mode: 'history',
     base: __dirname,
     routes: [{
-            path: '/',
-            component: packages
-        },
-        {
-            path: '/check',
-            component: check
-        },
-        {
-            path: '/login',
-            component: login
-        }
+        path: '/',
+        name: 'home',
+        component: packages
+    },
+    {
+        path: '/check',
+        component: check
+    },
+    {
+        path: '/profile',
+        name: 'profile',
+        component: profile
+    },
+    {
+        path: '/login',
+        name: 'login',
+        component: login
+    }
     ]
 });
 
+// router.beforeEach((to, from, next) => {
+//     if ($cookies.isKey("token")) {
+//         //naar profiel route
+//     }
+//     else {
+
+//     }
+// });
+
 new Vue({
     router,
-    axios,
-    //     template: `
-    //     <div>
-    //       <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-    //         <div class="collapse navbar-collapse" id="navbarNav">
-    //           <ul class="navbar-nav">
-    //             <li class="nav-item"><router-link to="/" class="nav-link">Home</router-link></li>
-    //             <li class="nav-item"><router-link to="/about" class="nav-link">About</router-link></li>
-    //             <li class="nav-item"><router-link to="/contact" class="nav-link">Contact</router-link></li>
-    //           </ul>
-    //         </div>
-    //       </nav>
-    //       <router-view class="view"></router-view>
-    //     </div>
-    //   `
+    axios
 }).$mount('#app');
 // const app = new Vue({
 //     router,
+//     axios,
 //     el: '#app',
 //     data: {
 //         results: []

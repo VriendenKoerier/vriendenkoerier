@@ -46,6 +46,9 @@
                             <b-nav-item href="#">
                                 <router-link to="/login">login</router-link>
                             </b-nav-item>
+                            <b-nav-item href="#">
+                                <router-link to="/profile">profile</router-link>
+                            </b-nav-item>
                         </b-navbar-nav>
 
                         <!-- Right aligned nav items -->

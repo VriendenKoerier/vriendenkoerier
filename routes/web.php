@@ -28,9 +28,13 @@ use Illuminate\Http\Request;
 // Route::patch('/projects/{project}', "PagesController@update");
 // Route::delete('/projects/{project}', "PagesController@destroy");
 
-Route::get('', function () {
+Route::get('/', function () {
     return view('homePage');
 });
+
+// Route::get('/', function () {
+//     return view('homePage');
+// });
 
 // Route::get('/show', function () {
 //     return view('show');
