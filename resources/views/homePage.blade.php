@@ -31,6 +31,7 @@
                 <router-view>
                 </router-view>
             </main>
+            <resfooter><resfooter>
         </div>
     </body>
 </html>

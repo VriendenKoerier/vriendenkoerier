@@ -34,6 +34,7 @@ import BootstrapVue from 'bootstrap-vue' //Importing
 
 Vue.use(BootstrapVue) // Telling Vue to use this in whole application
 Vue.component('navbar', require('./components/Navbar.vue').default);
+Vue.component('resfooter', require('./components/Footer.vue').default);
 Vue.component('packages', require('./components/Packages.vue').default);
 Vue.component('check', require('./components/Check.vue').default);
 Vue.component('login', require('./components/Login.vue').default);

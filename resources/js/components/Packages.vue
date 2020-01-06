@@ -2,7 +2,24 @@
   <div class="container">
     <div class="row justify-content-center">
       <div v-for="packet in packagesSend" v-bind:key="packet.id">
-        <ul>
+          <div>
+            <b-card
+                v-bind:title="packet.title"
+                img-src="https://picsum.photos/600/300/?image=25"
+                img-alt="Image"
+                img-top
+                tag="article"
+                style="max-width: 20rem;"
+                class="mb-2">
+                <b-card-text>
+                {{packet.description}}
+                </b-card-text>
+
+                <b-button to="#" variant="primary">Neem mee</b-button>
+                <b-button to="#" variant="primary">Info</b-button>
+            </b-card>
+            </div>
+        <!-- <ul>
           <li>{{packet.title}}</li>
           <li>{{packet.name}}</li>
           <li>{{packet.description}}</li>
@@ -15,7 +32,7 @@
           <li>{{packet.phone_number}}</li>
           <li>{{packet.postcode_a}}</li>
           <li>{{packet.postcode_b}}</li>
-        </ul>
+        </ul> -->
       </div>
     </div>
   </div>
@@ -76,3 +93,5 @@ export default {
   }
 };
 </script>
+
+
