@@ -26,11 +26,13 @@
 
     <body>
         <div id="app">
+            <div style="display: flex; flex-direction: column; height: 100%;">
             <navbar></navbar>
             <main class="py-4">
                 <router-view>
                 </router-view>
             </main>
+            </div>
             <resfooter><resfooter>
         </div>
     </body>

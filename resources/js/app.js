@@ -36,10 +36,13 @@ Vue.use(BootstrapVue) // Telling Vue to use this in whole application
 Vue.component('navbar', require('./components/Navbar.vue').default);
 Vue.component('resfooter', require('./components/Footer.vue').default);
 Vue.component('packages', require('./components/Packages.vue').default);
+Vue.component('packagesperuser', require('./components/PackagesPerUser.vue').default);
 Vue.component('check', require('./components/Check.vue').default);
 Vue.component('login', require('./components/Login.vue').default);
+Vue.component('pagination', require('./components/Pagination.vue').default);
 
 import packages from './components/Packages.vue';
+import profile from './components/Profile.vue';
 import check from './components/Check.vue';
 import login from './components/Login.vue';
 /**
@@ -47,16 +50,6 @@ import login from './components/Login.vue';
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-
-// const app = new Vue({
-//     el: '#app',
-//     mounted() {
-//         axios.get("https://api.vriendenkoerier.nl/api/packages")
-//             .then(response => {
-//                 this.results = response.data.results
-//             })
-//     }
-// });
 
 const BaseUrl = "https://api.vriendenkoerier.nl/api/";
 
@@ -77,6 +70,10 @@ const router = new VueRouter({
         {
             path: '/login',
             component: login
+        },
+        {
+            path: '/profile',
+            component: profile
         }
     ]
 });
@@ -84,38 +81,5 @@ const router = new VueRouter({
 new Vue({
     router,
     axios,
-    //     template: `
-    //     <div>
-    //       <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-    //         <div class="collapse navbar-collapse" id="navbarNav">
-    //           <ul class="navbar-nav">
-    //             <li class="nav-item"><router-link to="/" class="nav-link">Home</router-link></li>
-    //             <li class="nav-item"><router-link to="/about" class="nav-link">About</router-link></li>
-    //             <li class="nav-item"><router-link to="/contact" class="nav-link">Contact</router-link></li>
-    //           </ul>
-    //         </div>
-    //       </nav>
-    //       <router-view class="view"></router-view>
-    //     </div>
-    //   `
 }).$mount('#app');
-// const app = new Vue({
-//     router,
-//     el: '#app',
-//     data: {
-//         results: []
-//     },
-//     mounted() {
-//         this.getPosts('packages');
-//     },
-//     methods: {
-//         getPosts(packages) {
-//             let url = buildUrl(packages);
-//             axios.get(url).then((response) => {
-//                 this.results = response.data.results;
-//             }).catch(error => {
-//                 console.log(error);
-//             });
-//         }
-//     }
-// });
+

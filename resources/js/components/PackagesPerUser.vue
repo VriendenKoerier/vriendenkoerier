@@ -39,7 +39,6 @@
         </ul> -->
       </div>
     </div>
-    <pagination></pagination>
   </div>
 </template>
 
@@ -82,7 +81,7 @@ export default {
   //   }
   created() {
     axios
-      .get(`https://api.vriendenkoerier.nl/api/packages/15`)
+      .get(`https://api.vriendenkoerier.nl/api/packages/user/12`)
       .then(response => {
         // JSON responses are automatically parsed.
         this.packagesSend = response.data.data;
