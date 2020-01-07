@@ -10,8 +10,11 @@ import Vue from 'vue'
 import axios from 'axios';
 import VueRouter from 'vue-router';
 import VueCookie from 'vue-cookie';
+import VueFormWizard from 'vue-form-wizard'
+import 'vue-form-wizard/dist/vue-form-wizard.min.css'
 // Tell Vue to use the plugin
 Vue.use(VueCookie);
+Vue.use(VueFormWizard)
 
 
 Vue.use(VueRouter);
@@ -41,11 +44,15 @@ Vue.component('packages', require('./components/Packages.vue').default);
 Vue.component('check', require('./components/Check.vue').default);
 Vue.component('login', require('./components/Login.vue').default);
 Vue.component('profile', require('./components/Profile.vue').default);
+Vue.component('register', require('./components/Register.vue').default);
+Vue.component('createpackage', require('./components/CreatePackage.vue').default);
 
 import packages from './components/Packages.vue';
 import check from './components/Check.vue';
 import login from './components/Login.vue';
 import profile from './components/Profile.vue';
+import register from './components/Register.vue';
+import createpackage from './components/CreatePackage.vue';
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -76,13 +83,18 @@ const router = new VueRouter({
         component: packages
     },
     {
-        path: '/check',
-        component: check
+        path: '/create',
+        component: createpackage
     },
     {
         path: '/profile',
         name: 'profile',
         component: profile
+    },
+    {
+        path: '/register',
+        name: 'register',
+        component: register
     },
     {
         path: '/login',
