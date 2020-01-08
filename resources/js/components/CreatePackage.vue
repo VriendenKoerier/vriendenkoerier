@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-12">
-        <div class="card">
+        <div class="card" style="border: none;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
           <form
             method="post"
             ref="form"
@@ -107,9 +107,9 @@
                   id="input-group-5"
                   label="Lengte:"
                   label-for="input-5"
-                  for="lenght"
+                  for="length"
                 >
-                  <b-input required type="number" class="form-control" v-model="lenght" />
+                  <b-input required type="number" class="form-control" v-model="length" />
                 </b-form-group>
                 <b-form-group
                   class="text-justify"
@@ -126,8 +126,8 @@
                   class="text-justify"
                   id="input-group-8"
                   label="Foto's van het product:"
-                  label-for="photo"
-                  for="photo"
+                  label-for="file"
+                  for="file"
                 >
                   <b-form-file
                     required
@@ -257,7 +257,7 @@ export default {
       description: "",
       width: "",
       height: "",
-      lenght: "",
+      length: "",
       weight: "",
       file: "",
       contact: "",
@@ -272,73 +272,69 @@ export default {
     };
   },
   methods: {
-    //Gekke cooie uit elkaar halen g --> timon
+
     formSubmit() {
-      //   e.preventDefault();
-      //   this.$refs.form.submit();
-      let currentObj = this;
 
-      //   let dataFromForm = {
-      //     title: this.title,
-      //     description: this.description,
-      //     width: this.width,
-      //     height: this.height,
-      //     lenght: this.lenght,
-      //     weight: this.weight,
-      //     photo: file,
-      //     contact: this.contact,
-      //     postcode_a: this.postcode_a,
-      //     postcode_b: this.postcode_b,
-      //     adres_a: this.adres_a,
-      //     adres_b: this.adres_b,
-      //     avg_confirmed: this.avg_confirmed
-      //   };
-      //   //   let rawData = JSON.stringify(data);
-
-      //   console.log(dataFromForm);
-
-      let auth = {
-        // withCredentials: ,
-        headers: {
-          "Content-Type": "multipart/form-data",
-          Authorization: "Bearer " + this.token_string
-        }
-      };
-
-      if (this.avg_confirmed == "1") {
+      if (this.avg_confirmed == "1")
+      {
         this.avg_confirmed = 1;
       }
 
-      const formData = new FormData(this.$refs.form);
-      var imagefile = document.querySelector("#file");
-      console.log(imagefile.files[0]);
-      formData.append("photo", imagefile.files[0]);
-      formData.append("title", this.title);
-      formData.append("description", this.description);
-      formData.append("width", this.width);
-      formData.append("height", this.height);
-      formData.append("lenght", this.lenght);
-      formData.append("weight", this.weight);
-      formData.append("contact", this.contact);
-      formData.append("postcode_a", this.postcode_a);
-      formData.append("postcode_b", this.postcode_b);
-      formData.append("adres_a", this.adres_a);
-      formData.append("adres_b", this.adres_b);
-      formData.append("avg_confirmed", this.avg_confirmed);
-      console.log(formData);
+        var config = {
+            headers: {
+                'Authorization': `Bearer ${this.token_string}`,
+                // 'Content-Type': 'multipart/form-data',
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+                // 'X-Requested-With': 'XMLHttpRequest'
+                }
+        };
 
-      axios
-        .post("https://api.vriendenkoerier.nl/api/package", formData, auth)
-        .then(response => {
-          response.data;
-          console.log("ik ben in the then");
-          console.log(response.data);
-          //this.$router.push("home");
-        })
-        .catch(error => {
-          console.log("ik ben in de catch");
-          currentObj.output = error;
+        var formData = new FormData();
+
+        // append string
+        formData.append('title', this.title);
+        formData.append('description', this.description);
+        formData.append('height', this.height);
+        formData.append('width', this.width);
+        formData.append('length', this.length);
+        formData.append('weight', this.weight);
+        formData.append('photo', this.file, this.file.name);
+        formData.append('contact', this.contact);
+        formData.append('postcode_a', this.postcode_a);
+        formData.append('postcode_b', this.postcode_b);
+        formData.append('adres_a', this.adres_a);
+        formData.append('adres_b', this.adres_b);
+        formData.append('avg_confirmed', this.avg_confirmed);
+
+        var bodyParameters = {
+            title: this.title,
+            description: this.description,
+            height: this.height,
+            width: this.width,
+            length: this.length,
+            weight: this.weight,
+            photo: this.file,
+            contact: this.contact,
+            postcode_a: this.postcode_a,
+            postcode_b: this.postcode_b,
+            adres_a: this.adres_a,
+            adres_b: this.adres_b,
+            avg_confirmed: this.avg_confirmed,
+        };
+
+        axios.post(
+        '/package',
+        formData,
+        config
+        ).then((response) => {
+        console.log(response)
+        }).catch((error) => {
+        console.log(error)
+        console.log(bodyParameters)
+        console.log(this.file)
+        console.log(this.file.name)
         });
+
     }
     // onChangeFileUpload() {
     //   this.file = this.$refs.file.files[0];
