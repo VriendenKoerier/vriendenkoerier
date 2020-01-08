@@ -3,7 +3,14 @@
     <div class="row justify-content-center">
       <div class="col-md-12">
         <div class="card">
-          <form method="post" ref="form" id="form" name="form" enctype="multipart/form-data">
+          <form
+            method="post"
+            ref="form"
+            id="form"
+            name="form"
+            @submit.prevent="submit"
+            enctype="multipart/form-data"
+          >
             <form-wizard
               @on-complete="formSubmit"
               :start-index="0"
@@ -212,11 +219,7 @@
                   <b-jumbotron
                     header="Bedankt voor het invullen!"
                     lead="Deel uw pakket op social media!"
-                  >
-                    <p>For more information visit website</p>
-                    <b-button variant="primary" href="#">Share buttons</b-button>
-                    <b-button variant="primary" href="#">Share buttons</b-button>
-                  </b-jumbotron>
+                  ></b-jumbotron>
                 </div>
               </tab-content>
             </form-wizard>
@@ -275,22 +278,24 @@ export default {
       //   this.$refs.form.submit();
       let currentObj = this;
 
-      let data = {
-        title: this.title,
-        description: this.description,
-        width: this.width,
-        height: this.height,
-        lenght: this.lenght,
-        weight: this.weight,
-        photo: this.file,
-        contact: this.contact,
-        postcode_a: this.postcode_a,
-        postcode_b: this.postcode_b,
-        adres_a: this.adres_a,
-        adres_b: this.adres_b,
-        avg_confirmed: this.avg_confirmed
-      };
-      //   let rawData = JSON.stringify(data);
+      //   let dataFromForm = {
+      //     title: this.title,
+      //     description: this.description,
+      //     width: this.width,
+      //     height: this.height,
+      //     lenght: this.lenght,
+      //     weight: this.weight,
+      //     photo: file,
+      //     contact: this.contact,
+      //     postcode_a: this.postcode_a,
+      //     postcode_b: this.postcode_b,
+      //     adres_a: this.adres_a,
+      //     adres_b: this.adres_b,
+      //     avg_confirmed: this.avg_confirmed
+      //   };
+      //   //   let rawData = JSON.stringify(data);
+
+      //   console.log(dataFromForm);
 
       let auth = {
         // withCredentials: ,
@@ -304,26 +309,26 @@ export default {
         this.avg_confirmed = 1;
       }
 
-      //   const formData = new FormData(this.$refs.form);
-      //   var imagefile = document.querySelector("#file");
-      //   console.log(imagefile.files[0]);
-      //   formData.append("photo", imagefile.files[0]);
-      //   formData.append("title", this.title);
-      //   formData.append("description", this.description);
-      //   formData.append("width", this.width);
-      //   formData.append("height", this.height);
-      //   formData.append("lenght", this.lenght);
-      //   formData.append("weight", this.weight);
-      //   formData.append("contact", this.contact);
-      //   formData.append("postcode_a", this.postcode_a);
-      //   formData.append("postcode_b", this.postcode_b);
-      //   formData.append("adres_a", this.adres_a);
-      //   formData.append("adres_b", this.adres_b);
-      //   formData.append("avg_confirmed", this.avg_confirmed);
-      //   console.log(formData);
+      const formData = new FormData(this.$refs.form);
+      var imagefile = document.querySelector("#file");
+      console.log(imagefile.files[0]);
+      formData.append("photo", imagefile.files[0]);
+      formData.append("title", this.title);
+      formData.append("description", this.description);
+      formData.append("width", this.width);
+      formData.append("height", this.height);
+      formData.append("lenght", this.lenght);
+      formData.append("weight", this.weight);
+      formData.append("contact", this.contact);
+      formData.append("postcode_a", this.postcode_a);
+      formData.append("postcode_b", this.postcode_b);
+      formData.append("adres_a", this.adres_a);
+      formData.append("adres_b", this.adres_b);
+      formData.append("avg_confirmed", this.avg_confirmed);
+      console.log(formData);
 
       axios
-        .post("https://api.vriendenkoerier.nl/api/package", data, auth)
+        .post("https://api.vriendenkoerier.nl/api/package", formData, auth)
         .then(response => {
           response.data;
           console.log("ik ben in the then");
