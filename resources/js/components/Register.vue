@@ -96,7 +96,7 @@ export default {
         this.password.length > 0
       ) {
         axios
-          .post("https://api.vriendenkoerier.nl/api/auth/signup", {
+          .post("/auth/signup", {
             name: this.name,
             email: this.email,
             password: this.password,

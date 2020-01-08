@@ -12,6 +12,7 @@
           <!-- `<router-link>` will be rendered as an `<a>` tag by default -->
           <b-nav-item to="/">Pakketten</b-nav-item>
           <b-nav-item to="create">Aanmaken</b-nav-item>
+          <b-nav-item to="profile">profiel</b-nav-item>
         </b-navbar-nav>
 
         <!-- Right aligned nav items -->

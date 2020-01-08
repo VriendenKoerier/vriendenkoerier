@@ -15,7 +15,7 @@ export default {
   methods: {
     get_users_data: function() {
       axios
-        .get("https://api.vriendenkoerier.nl/api/auth/user", {
+        .get("/auth/user", {
           headers: {
             Authorization: "Bearer " + this.token_string
           }

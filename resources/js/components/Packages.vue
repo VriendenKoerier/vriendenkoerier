@@ -66,7 +66,7 @@ export default {
         this.packagesSend = response.data.data;
       })
       .catch(e => {
-        this.errors.push(e);
+        // this.errors.push(e);
       });
     //   mounted() {
     //     axios

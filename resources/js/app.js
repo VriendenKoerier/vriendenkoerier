@@ -12,14 +12,18 @@ import VueRouter from 'vue-router';
 import VueCookie from 'vue-cookie';
 import VueFormWizard from 'vue-form-wizard'
 import 'vue-form-wizard/dist/vue-form-wizard.min.css'
+
+
+axios.defaults.baseURL = "https://api.vriendenkoerier.nl/api"
+
 // Tell Vue to use the plugin
 Vue.use(VueCookie);
 Vue.use(VueFormWizard)
 
 
 Vue.use(VueRouter);
-Vue.use(axios);
 
+Vue.use(axios);
 
 window.Vue = require('vue');
 import('./RouterSetup');

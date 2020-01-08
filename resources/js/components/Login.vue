@@ -73,7 +73,7 @@ export default {
   methods: {
     get_data: function() {
       axios
-        .post("https://api.vriendenkoerier.nl/api/auth/login", {
+        .post("/auth/login", {
           client_id: 1,
           client_secret: "HxqJqYFwf4FwiG4ZBX2lZXKcIWalywQ80oAuS831",
           grant_type: "password",
@@ -90,7 +90,7 @@ export default {
           this.$router.push("profile");
         })
         .catch(response => {
-          console.log("KANKER KAPOT");
+          console.log("Couldn't create or get token");
         });
     }
   },
