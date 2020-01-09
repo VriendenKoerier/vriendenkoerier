@@ -9,11 +9,21 @@ require('./bootstrap');
 import Vue from 'vue'
 import axios from 'axios';
 import VueRouter from 'vue-router';
+import VueCookie from 'vue-cookie';
+import VueFormWizard from 'vue-form-wizard'
+import 'vue-form-wizard/dist/vue-form-wizard.min.css'
+
+
+axios.defaults.baseURL = "https://api.vriendenkoerier.nl/api"
+
+// Tell Vue to use the plugin
+Vue.use(VueCookie);
+Vue.use(VueFormWizard)
 
 
 Vue.use(VueRouter);
-Vue.use(axios);
 
+Vue.use(axios);
 
 window.Vue = require('vue');
 import('./RouterSetup');
@@ -40,11 +50,17 @@ Vue.component('packagesperuser', require('./components/PackagesPerUser.vue').def
 Vue.component('check', require('./components/Check.vue').default);
 Vue.component('login', require('./components/Login.vue').default);
 Vue.component('pagination', require('./components/Pagination.vue').default);
+Vue.component('profile', require('./components/Profile.vue').default);
+Vue.component('register', require('./components/Register.vue').default);
+Vue.component('createpackage', require('./components/CreatePackage.vue').default);
 
 import packages from './components/Packages.vue';
 import profile from './components/Profile.vue';
 import check from './components/Check.vue';
 import login from './components/Login.vue';
+import profile from './components/Profile.vue';
+import register from './components/Register.vue';
+import createpackage from './components/CreatePackage.vue';
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -60,23 +76,40 @@ const router = new VueRouter({
     mode: 'history',
     base: __dirname,
     routes: [{
-            path: '/',
-            component: packages
-        },
-        {
-            path: '/check',
-            component: check
-        },
-        {
-            path: '/login',
-            component: login
-        },
-        {
-            path: '/profile',
-            component: profile
-        }
+        path: '/',
+        name: 'home',
+        component: packages
+    },
+    {
+        path: '/create',
+        component: createpackage
+    },
+    {
+        path: '/profile',
+        name: 'profile',
+        component: profile
+    },
+    {
+        path: '/register',
+        name: 'register',
+        component: register
+    },
+    {
+        path: '/login',
+        name: 'login',
+        component: login
+    }
     ]
 });
+
+// router.beforeEach((to, from, next) => {
+//     if ($cookies.isKey("token")) {
+//         //naar profiel route
+//     }
+//     else {
+
+//     }
+// });
 
 new Vue({
     router,
