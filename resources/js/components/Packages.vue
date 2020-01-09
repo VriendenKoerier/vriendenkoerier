@@ -80,11 +80,11 @@ export default {
   },
   methods: {
     searchPackage: function() {
-      if ((this.search = !null)) {
+      if (this.search) {
         console.log(this.search);
         axios
           .get(
-            `https://api.vriendenkoerier.nl/api/packages/5/?search=${this.search}`
+            `https://api.vriendenkoerier.nl/api/packages/15/?search=${this.search}`
           )
           .then(response => {
             // JSON responses are automatically parsed.
@@ -94,7 +94,15 @@ export default {
             this.errors.push(e);
           });
       } else {
-        this.error.push("Niks ingevuld!");
+        axios
+          .get(`https://api.vriendenkoerier.nl/api/packages/15`)
+          .then(response => {
+            // JSON responses are automatically parsed.
+            this.packagesSend = response.data.data;
+          })
+          .catch(e => {
+            this.errors.push(e);
+          });
       }
     }
   },
