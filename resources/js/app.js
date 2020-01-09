@@ -58,7 +58,6 @@ import packages from './components/Packages.vue';
 import profile from './components/Profile.vue';
 import check from './components/Check.vue';
 import login from './components/Login.vue';
-import profile from './components/Profile.vue';
 import register from './components/Register.vue';
 import createpackage from './components/CreatePackage.vue';
 /**
@@ -82,6 +81,7 @@ const router = new VueRouter({
     },
     {
         path: '/create',
+        name: 'create',
         component: createpackage
     },
     {
