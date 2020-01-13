@@ -7,7 +7,7 @@
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav variant="light">
-          <b-nav-item to="packages">Pakketten</b-nav-item>
+          <b-nav-item to="/">Pakketten</b-nav-item>
           <b-nav-item to="create">Aanmaken</b-nav-item>
           <b-nav-item to="profile">Profiel</b-nav-item>
         </b-navbar-nav>
