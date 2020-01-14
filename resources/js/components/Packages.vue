@@ -121,7 +121,6 @@
               </template>
             </b-modal>
             <b-modal
-              v-model="show"
               v-bind:title="'Ik wil '+packet.title+' brengen!'"
               :header-bg-variant="modal.headerBgVariant"
               :header-text-variant="modal.headerTextVariant"
@@ -135,14 +134,12 @@
               <b-form>
                 <b-form-group
                   class="text-justify"
-                  id="input-group-3"
                   label="Waarom wil je het pakket meenemen?"
                   label-for="Message"
-                  for="formData.message"
+                  for="formData"
                 >
                   <b-textarea
                     required
-                    id="textarea"
                     type="text"
                     placeholder="Bericht"
                     class="form-control"
@@ -168,7 +165,7 @@
                   variant="outline-danger"
                   @click="$bvModal.hide('package-detail-form'+packet.id)"
                 >Sluiten</b-button>
-                <b-button v-on:click="takePackege()">Neem mee!</b-button>
+                <b-button v-on:click="takePackage()">Neem mee!</b-button>
               </template>
             </b-modal>
           </b-card>
@@ -238,12 +235,12 @@ export default {
 
         var packageForm = {
           id: this.formData.id,
-          messsage: this.formData.message,
+          message: this.formData.message,
           user_id: this.formData.user_id
         };
 
         axios
-          .patch("/package", packageForm, config)
+          .patch("/package/invite", packageForm, config)
           .then(response => {
             console.log(response);
           })
