@@ -14,7 +14,7 @@
         <div>
           <b-card
             v-bind:title="packet.title"
-            v-bind:img-src="'/images/'+packet.photo"
+            v-bind:img-src="'https://api.vriendenkoerier.nl/images/'+packet.photo"
             img-alt="Image"
             fluid
             img-top
@@ -53,7 +53,11 @@
                 <b-row>
                   <b-col>
                     <div>
-                      <b-img v-bind:src="'/images/'+packet.photo" fluid alt="Responsive image"></b-img>
+                      <b-img
+                        v-bind:src="'https://api.vriendenkoerier.nl/images/'+packet.photo"
+                        fluid
+                        alt="Responsive image"
+                      ></b-img>
                     </div>
                   </b-col>
                   <b-col>
