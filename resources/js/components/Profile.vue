@@ -11,7 +11,7 @@
               <ul>
                 <li>Naam:</li>
                 <li>{{user.name}}</li>
-                <li>Email:</li>
+                <li>email:</li>
                 <li>{{user.email}}</li>
               </ul>
             </b-card-text>

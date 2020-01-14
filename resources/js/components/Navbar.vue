@@ -8,8 +8,7 @@
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav variant="light">
           <b-nav-item to="/">Pakketten</b-nav-item>
-          <b-nav-item to="create">Aanmaken</b-nav-item>
-          <b-nav-item to="profile">Profiel</b-nav-item>
+          <b-nav-item v-show="loggedIn == true" to="create">Aanmaken</b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav class="ml-auto">
           <!-- <b-nav-form>
@@ -22,14 +21,24 @@
               type="submit"
             >Search</b-button>
           </b-nav-form>-->
-
-          <b-nav-item-dropdown right>
+          <!-- <template v-if="loggedIn == true"> -->
+          <b-nav-item-dropdown right v-show="loggedIn == true">
             <template v-slot:button-content>
-              <em>User</em>
+              <em>{{user.name}}</em>
             </template>
-            <b-dropdown-item href="#">Profiel</b-dropdown-item>
-            <b-dropdown-item href="#">Uitloggen</b-dropdown-item>
+            <b-dropdown-item to="profile">Profiel</b-dropdown-item>
+            <b-dropdown-item v-on:click="logout()">Uitloggen</b-dropdown-item>
           </b-nav-item-dropdown>
+          <!-- </template> -->
+          <!-- <template > -->
+          <b-nav-item-dropdown right v-show="loggedIn == false">
+            <template v-slot:button-content>
+              <em>Login</em>
+            </template>
+            <b-dropdown-item to="login">Login</b-dropdown-item>
+            <b-dropdown-item to="register">Registreren</b-dropdown-item>
+          </b-nav-item-dropdown>
+          <!-- </template> -->
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
@@ -45,7 +54,8 @@ export default {
         name: "",
         email: ""
       },
-      token_string: ""
+      token_string: "",
+      loggedIn: false
     };
   },
   methods: {
@@ -60,11 +70,34 @@ export default {
           console.log("werlt 2");
           this.user = response["data"];
           console.log(this.user);
+          this.loggedIn = true;
           //return this.user;
         })
         .catch(response => {
           console.log("werktniet 2");
+          this.loggedIn = false;
+
           //console.log(response.response.data);
+        });
+    },
+    logout: function() {
+      axios
+        .get("https://api.vriendenkoerier.nl/api/auth/logout", {
+          headers: {
+            Authorization: "Bearer " + this.token_string
+          }
+        })
+        .then(response => {
+          this.loggedIn = false;
+          document.cookie =
+            "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+
+          this.$router.push("/");
+
+          //return this.user;
+        })
+        .catch(response => {
+          //add error if not logout
         });
     }
   },
@@ -84,6 +117,7 @@ export default {
       this.get_users_data();
     } else {
       this.$router.push("login");
+      this.loggedIn = false;
       //doorroute naar login
       console.log("niet ingelogd");
     }

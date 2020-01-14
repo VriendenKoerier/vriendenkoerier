@@ -2,7 +2,10 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-12">
-        <div class="card" style="border: none;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+        <div
+          class="card"
+          style="border: none;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"
+        >
           <form
             method="post"
             ref="form"
@@ -247,8 +250,6 @@ export default {
       this.token_string = token;
     } else {
       this.$router.push("login");
-      //doorroute naar login
-      console.log("niet ingelogd");
     }
   },
   data() {
@@ -272,69 +273,66 @@ export default {
     };
   },
   methods: {
-
     formSubmit() {
-
-      if (this.avg_confirmed == "1")
-      {
+      if (this.avg_confirmed == "1") {
         this.avg_confirmed = 1;
       }
 
-        var config = {
-            headers: {
-                'Authorization': `Bearer ${this.token_string}`,
-                // 'Content-Type': 'multipart/form-data',
-                // 'Content-Type': 'application/x-www-form-urlencoded',
-                // 'X-Requested-With': 'XMLHttpRequest'
-                }
-        };
+      var config = {
+        headers: {
+          Authorization: `Bearer ${this.token_string}`
+          // 'Content-Type': 'multipart/form-data',
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+          // 'X-Requested-With': 'XMLHttpRequest'
+        }
+      };
 
-        var formData = new FormData();
+      var formData = new FormData();
 
-        // append string
-        formData.append('title', this.title);
-        formData.append('description', this.description);
-        formData.append('height', this.height);
-        formData.append('width', this.width);
-        formData.append('length', this.length);
-        formData.append('weight', this.weight);
-        formData.append('photo', this.file, this.file.name);
-        formData.append('contact', this.contact);
-        formData.append('postcode_a', this.postcode_a);
-        formData.append('postcode_b', this.postcode_b);
-        formData.append('adres_a', this.adres_a);
-        formData.append('adres_b', this.adres_b);
-        formData.append('avg_confirmed', this.avg_confirmed);
+      // append string
+      formData.append("title", this.title);
+      formData.append("description", this.description);
+      formData.append("height", this.height);
+      formData.append("width", this.width);
+      formData.append("length", this.length);
+      formData.append("weight", this.weight);
+      formData.append("photo", this.file, this.file.name);
+      formData.append("contact", this.contact);
+      formData.append("postcode_a", this.postcode_a);
+      formData.append("postcode_b", this.postcode_b);
+      formData.append("adres_a", this.adres_a);
+      formData.append("adres_b", this.adres_b);
+      formData.append("avg_confirmed", this.avg_confirmed);
 
-        var bodyParameters = {
-            title: this.title,
-            description: this.description,
-            height: this.height,
-            width: this.width,
-            length: this.length,
-            weight: this.weight,
-            photo: this.file,
-            contact: this.contact,
-            postcode_a: this.postcode_a,
-            postcode_b: this.postcode_b,
-            adres_a: this.adres_a,
-            adres_b: this.adres_b,
-            avg_confirmed: this.avg_confirmed,
-        };
+      var bodyParameters = {
+        title: this.title,
+        description: this.description,
+        height: this.height,
+        width: this.width,
+        length: this.length,
+        weight: this.weight,
+        photo: this.file,
+        contact: this.contact,
+        postcode_a: this.postcode_a,
+        postcode_b: this.postcode_b,
+        adres_a: this.adres_a,
+        adres_b: this.adres_b,
+        avg_confirmed: this.avg_confirmed
+      };
 
-        axios.post(
-        '/package',
-        formData,
-        config
-        ).then((response) => {
-        console.log(response)
-        }).catch((error) => {
-        console.log(error)
-        console.log(bodyParameters)
-        console.log(this.file)
-        console.log(this.file.name)
+      axios
+        .post("/package", formData, config)
+        .then(response => {
+          this.$router.push("/");
+
+          // console.log(response)
+        })
+        .catch(error => {
+          // console.log(error)
+          // console.log(bodyParameters)
+          // console.log(this.file)
+          // console.log(this.file.name)
         });
-
     }
     // onChangeFileUpload() {
     //   this.file = this.$refs.file.files[0];
