@@ -31,7 +31,6 @@
             <b-button v-b-modal="'package-detail-form'+packet.id" variant="primary">Neem mee</b-button>
             <b-button v-b-modal="'package-detail'+packet.id" variant="primary">Info</b-button>
             <b-modal
-              v-model="show"
               v-bind:title="packet.title"
               :header-bg-variant="modal.headerBgVariant"
               :header-text-variant="modal.headerTextVariant"
@@ -100,10 +99,6 @@
                         <strong>Postcode ontvanger:</strong>
                         {{packet.postcode_b}}
                       </b-list-group-item>
-                      <b-list-group-item>
-                        <strong>Contact gegevens:</strong>
-                        {{packet.contact}}
-                      </b-list-group-item>
                     </b-list-group>
                   </b-col>
                 </b-row>
@@ -132,34 +127,31 @@
               v-bind:id="'package-detail-form'+packet.id"
               centered
             >
-              <b-form>
-                <b-form-group
-                  class="text-justify"
-                  label="Waarom wil je het pakket meenemen?"
-                  label-for="Message"
-                  for="formData"
-                >
-                  <b-textarea
-                    required
-                    type="text"
-                    placeholder="Bericht"
-                    class="form-control"
-                    v-model="formData.message"
-                  ></b-textarea>
-                  <b-input
-                    v-show="false"
-                    type="hidden"
-                    v-model="formData.id"
-                    v-bind:value="packet.id"
-                  ></b-input>
-                  <b-input
-                    v-show="false"
-                    type="hidden"
-                    v-model="formData.user_id"
-                    v-bind:value="packet.user_id"
-                  ></b-input>
-                </b-form-group>
-              </b-form>
+              <b-form-group
+                class="text-justify"
+                label="Waarom wil je het pakket meenemen?"
+                label-for="Message"
+                for="formData"
+              >
+                <b-textarea
+                  type="text"
+                  placeholder="Bericht"
+                  class="form-control"
+                  v-model="formData.message"
+                ></b-textarea>
+                <b-input
+                  v-show="false"
+                  type="hidden"
+                  v-model="formData.id"
+                  v-bind:value="packet.id"
+                ></b-input>
+                <b-input
+                  v-show="false"
+                  type="hidden"
+                  v-model="formData.user_id"
+                  v-bind:value="packet.user_id"
+                ></b-input>
+              </b-form-group>
               <template v-slot:modal-footer>
                 <b-button
                   size="sm"
@@ -220,7 +212,7 @@ export default {
   },
   methods: {
     takePackage: function() {
-      if (loggedIn()) {
+      if (this.loggedIn()) {
         if (this.avg_confirmed == "1") {
           this.avg_confirmed = 1;
         }
@@ -234,11 +226,12 @@ export default {
           }
         };
 
-        var packageForm = {
-          id: this.formData.id,
-          message: this.formData.message,
-          user_id: this.formData.user_id
-        };
+        var packageForm = new FormData();
+
+        // append string
+        packageForm.append("id", this.formData.id);
+        packageForm.append("message", this.formData.message);
+        packageForm.append("user_id", this.formData.user_id);
 
         axios
           .patch("/package/invite", packageForm, config)
@@ -261,6 +254,13 @@ export default {
       var value = "; " + document.cookie;
       var parts = value.split("; " + "token" + "=");
       if (parts.length == 2) {
+        token = parts
+          .pop()
+          .split(";")
+          .shift();
+
+        console.log(token);
+        this.token_string = token;
         return true;
       } else {
         this.$router.push("login");

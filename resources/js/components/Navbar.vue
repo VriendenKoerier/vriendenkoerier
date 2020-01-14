@@ -7,8 +7,9 @@
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav variant="light">
-          <b-nav-item to="/">Pakketten</b-nav-item>
-          <b-nav-item v-show="loggedIn == true" to="create">Aanmaken</b-nav-item>
+          <b-nav-item to="/">Home</b-nav-item>
+          <b-nav-item to="myPackages" v-show="loggedIn == true">Mijn Pakketten</b-nav-item>
+          <b-nav-item v-show="loggedIn == true" to="create">Nieuw Pakket</b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav class="ml-auto">
           <!-- <b-nav-form>
