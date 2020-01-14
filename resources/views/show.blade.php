@@ -76,6 +76,14 @@
                 <h5 class="font-primary text-color-gray-dark">Telefoon nummer:</h5>
                 <p>0{{$package->phone_number}}</p>
             </div>
+            <div class="field">
+                <h5 class="font-primary text-color-gray-dark">Email:</h5>
+                <p>{{$package->email}}</p>
+            </div>
+            <div class="field">
+                <h5 class="font-primary text-color-gray-dark">Email:</h5>
+                <p>{{$package->email}}</p>
+            </div>
             {{-- </section> --}}
             <div class="buttons has-addons is-centered">
                 {{-- <p class="control"> --}}

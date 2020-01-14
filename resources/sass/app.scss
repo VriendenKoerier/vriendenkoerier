@@ -1,74 +1,9 @@
-//
-@import "normalize/_normalize.scss";
-@import "variables/variables.scss";
-@import "pages/home-page.scss";
-@import "pages/create-page.scss";
-@import "pages/show-page.scss";
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Nunito");
 
-html {
-    font-size: 16px;
-    width: 100%;
+// Variables
+@import "variables-vriendenkoerier";
 
-    @media screen and (min-width: 900px) {
-        font-size: 18px;
-    }
-
-    @media screen and (min-width: 1200px) {
-        font-size: 20px;
-    }
-}
-
-// body,
-// html {
-//     height: 100%;
-// }
-
-// h1 {
-//     font-size: 4em;
-//     margin: 0;
-//     line-height: 3.5rem;
-//     letter-spacing: 0.2rem;
-//     font-weight: normal;
-// }
-
-// h4 {
-//     font-size: 1.7em;
-//     margin-bottom: 0;
-// }
-
-// h6 {
-//     // font-size: 1.7em;
-//     margin-bottom: 0;
-// }
-
-// p {
-//     font-size: 1em;
-// }
-
-.font-primary {
-    font-family: $font-primary;
-    font-weight: 100;
-}
-
-.font-secondary {
-    font-family: $font-secondary;
-}
-
-.text-color-primary {
-    color: $color-primary-dark;
-}
-
-.text-color-white {
-    color: $color-white;
-}
-
-.text-color-gray-dark {
-    color: $color-gray-dark;
-}
-
-.contain {
-    margin: 0 auto;
-    padding-left: 50px;
-    padding-right: 50px;
-    padding-top: 10px;
-}
+// Bootstrap
+@import "~bootstrap/scss/bootstrap";
+@import "node_modules/bootstrap-vue/src/index.scss";
