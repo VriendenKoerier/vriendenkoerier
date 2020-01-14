@@ -23,7 +23,9 @@
                 margin-top: 10px;
                 margin-bottom: 10px;
                 margin-right: 10px;
-                margin-left: 10px;"
+                margin-left: 10px;
+                border: none;
+                box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 8px 0px, rgba(0, 0, 0, 0.1) 0px 6px 20px 0px;"
             class="mb-2"
           >
             <b-card-text>{{packet.description}}</b-card-text>
