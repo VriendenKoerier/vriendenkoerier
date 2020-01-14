@@ -53,6 +53,7 @@ Vue.component('pagination', require('./components/Pagination.vue').default);
 Vue.component('profile', require('./components/Profile.vue').default);
 Vue.component('register', require('./components/Register.vue').default);
 Vue.component('createpackage', require('./components/CreatePackage.vue').default);
+Vue.component('myPackages', require('./components/myPackages.vue').default);
 
 import packages from './components/Packages.vue';
 import profile from './components/Profile.vue';
@@ -60,6 +61,7 @@ import check from './components/Check.vue';
 import login from './components/Login.vue';
 import register from './components/Register.vue';
 import createpackage from './components/CreatePackage.vue';
+import myPackages from './components/myPackages.vue';
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -93,6 +95,11 @@ const router = new VueRouter({
         path: '/register',
         name: 'register',
         component: register
+    },
+    {
+        path: '/myPackages',
+        name: 'myPackages',
+        component: myPackages
     },
     {
         path: '/login',
