@@ -81,7 +81,7 @@
                 <b-form-group
                   class="text-justify"
                   id="input-group-7"
-                  label="Breette:"
+                  label="Breedte:"
                   label-for="input-7"
                   for="width"
                 >
