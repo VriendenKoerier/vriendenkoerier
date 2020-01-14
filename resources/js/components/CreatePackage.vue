@@ -74,7 +74,7 @@
                     v-model="avg_confirmed"
                     id="checkboxes-4"
                     value="1"
-                  >Ik ga accoord met voorwaarden</b-form-checkbox>
+                  >Ik ga akkoord met voorwaarden</b-form-checkbox>
                 </b-form-group>
               </tab-content>
               <tab-content>
