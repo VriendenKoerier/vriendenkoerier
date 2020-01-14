@@ -15,7 +15,6 @@
             enctype="multipart/form-data"
           >
             <form-wizard
-              @on-complete="formSubmit"
               :start-index="0"
               color="#026473"
               title="Maak een nieuw pakket aan"
@@ -225,6 +224,31 @@
                   ></b-jumbotron>
                 </div>
               </tab-content>
+              <template slot="footer" slot-scope="props">
+                <div class="wizard-footer-left">
+                  <wizard-button
+                    v-if="props.activeTabIndex > 0 && !props.isLastStep"
+                    @click.native="props.prevTab()"
+                    :style="props.fillButtonStyle"
+                  >Vorige</wizard-button>
+                </div>
+                <div class="wizard-footer-right">
+                  <wizard-button
+                    v-if="!props.isLastStep"
+                    @click.native="props.nextTab()"
+                    class="wizard-footer-right"
+                    :style="props.fillButtonStyle"
+                  >Volgende</wizard-button>
+
+                  <wizard-button
+                    v-else
+                    v-bind:disabled="hasClicked"
+                    @click.native="formSubmit"
+                    class="wizard-footer-right finish-button"
+                    :style="props.fillButtonStyle"
+                  >{{props.isLastStep ? 'Done' : 'Next'}}</wizard-button>
+                </div>
+              </template>
             </form-wizard>
           </form>
         </div>
@@ -269,11 +293,13 @@ export default {
       avg_confirmed: 0,
       token_string: "",
       formData: "",
-      imagefile: ""
+      imagefile: "",
+      hasClicked: false
     };
   },
   methods: {
     formSubmit() {
+      this.hasClicked = true;
       if (this.avg_confirmed == "1") {
         this.avg_confirmed = 1;
       }
@@ -323,11 +349,13 @@ export default {
       axios
         .post("/package", formData, config)
         .then(response => {
+          this.hasClicked = false;
           this.$router.push("/");
-
           // console.log(response)
         })
         .catch(error => {
+          this.hasClicked = false;
+
           // console.log(error)
           // console.log(bodyParameters)
           // console.log(this.file)
