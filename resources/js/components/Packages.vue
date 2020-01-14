@@ -14,8 +14,9 @@
         <div>
           <b-card
             v-bind:title="packet.title"
-            img-src="https://picsum.photos/600/300/?image=25"
+            v-bind:img-src="'/images/'+packet.photo"
             img-alt="Image"
+            fluid
             img-top
             tag="article"
             style="max-width: 20rem;
@@ -53,7 +54,7 @@
                 <b-row>
                   <b-col>
                     <div>
-                      <b-img v-bind:src="packet.photo" fluid alt="Responsive image"></b-img>
+                      <b-img v-bind:src="'/images/'+packet.photo" fluid alt="Responsive image"></b-img>
                     </div>
                   </b-col>
                   <b-col>
