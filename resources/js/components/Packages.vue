@@ -1,5 +1,14 @@
 <template>
   <div class="container">
+    <b-jumbotron bg-variant="secondary" text-variant="black">
+      <template v-slot:header>Welkom bij Vriendenkoerier</template>
+
+      <template v-slot:lead>Wat kun je nou precies met ons platform? Wanneer is het handig?</template>
+
+      <hr class="my-4" />
+
+      <p>Stel: je wil een bepaald product graag hebben. Je koopt het bijv. op Marktplaats. Of iets wat bij een vriend of familie ligt, wil je graag terug. Maar de afstand die jullie van elkaar wonen is vervelend. (Je kunt een pakketdienst inschakelen, maar dat kost €6,50. En dat geeft weer uitstoot, wat we niet willen.) Vrienden Koerier stelt je in staat om op zoek te gaan naar iemand die toevallig dezelfde reis wil maken als jouw pakket, zodat diegene het voor je kan meenemen.</p>
+    </b-jumbotron>
     <div class="justify-content-start col-md-6 d-md-inline-block">
       <b-input-group placeholder="Zoeken" name="search" class="mt-3">
         <b-form-input @keyup.enter.native="searchPackage" v-model="search"></b-form-input>
