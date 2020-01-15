@@ -88,7 +88,7 @@ export default {
           //   localStorage.setToken("acces_token", "fgrrwgwtgrggrrtg");
           // console.log(localStorage.getItem("acces_token"));
 
-          this.$router.push("home");
+          this.$router.push("/");
         })
         .catch(response => {
           console.log("Couldn't create or get token");
