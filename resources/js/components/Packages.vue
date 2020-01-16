@@ -23,7 +23,7 @@
         <div>
           <b-card
             v-bind:title="packet.title"
-            v-bind:img-src="'https://api.vriendenkoerier.nl/images/'+packet.photo"
+            v-bind:img-src="'https://api.vriendenkoerier.nl/images/'+packet.photo" 
             img-alt="Image"
             fluid
             img-top

@@ -35,22 +35,6 @@
             size="lg"
             centered
           >
-            <b-card-text>{{packet.description}}</b-card-text>
-
-            <b-button v-on:click="deletePackage(packet.id)" variant="danger">Verwijderen</b-button>
-            <b-button v-b-modal="'package-detail'+packet.id" variant="primary">Info</b-button>
-            <b-modal
-              v-bind:title="packet.title"
-              :header-bg-variant="modal.headerBgVariant"
-              :header-text-variant="modal.headerTextVariant"
-              :body-bg-variant="modal.bodyBgVariant"
-              :body-text-variant="modal.bodyTextVariant"
-              :footer-bg-variant="modal.footerBgVariant"
-              :footer-text-variant="modal.footerTextVariant"
-              v-bind:id="'package-detail'+packet.id"
-              size="lg"
-              centered
-            >
               <b-jumbotron bg-variant="white" text-variant="primary">
                 <template v-slot:header>{{packet.title}}</template>
 
