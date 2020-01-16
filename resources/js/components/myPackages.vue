@@ -14,8 +14,26 @@
                 margin-top: 10px;
                 margin-bottom: 10px;
                 margin-right: 10px;
-                margin-left: 10px;"
-            class="mb-2"
+                margin-left: 10px;
+                border: none;
+                box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 8px 0px, rgba(0, 0, 0, 0.1) 0px 6px 20px 0px;"
+          class="mb-2"
+        >
+          <b-card-text>{{packet.description}}</b-card-text>
+
+          <b-button v-on:click="deletePackage(packet.id)" variant="danger">Verwijderen</b-button>
+          <b-button v-b-modal="'package-detail'+packet.id" variant="primary">Info</b-button>
+          <b-modal
+            v-bind:title="packet.title"
+            :header-bg-variant="modal.headerBgVariant"
+            :header-text-variant="modal.headerTextVariant"
+            :body-bg-variant="modal.bodyBgVariant"
+            :body-text-variant="modal.bodyTextVariant"
+            :footer-bg-variant="modal.footerBgVariant"
+            :footer-text-variant="modal.footerTextVariant"
+            v-bind:id="'package-detail'+packet.id"
+            size="lg"
+            centered
           >
             <b-card-text>{{packet.description}}</b-card-text>
 
