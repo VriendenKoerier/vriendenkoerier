@@ -71,8 +71,8 @@ export default {
           console.log("werlt 2");
           this.user = response["data"];
           console.log(this.user);
+
           this.loggedIn = true;
-          //return this.user;
         })
         .catch(response => {
           console.log("werktniet 2");

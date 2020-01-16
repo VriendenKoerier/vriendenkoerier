@@ -1,5 +1,14 @@
 <template>
   <div class="container">
+    <b-jumbotron bg-variant="secondary" text-variant="black">
+      <template v-slot:header>Welkom bij Vriendenkoerier</template>
+
+      <template v-slot:lead>Wat kun je nou precies met ons platform? Wanneer is het handig?</template>
+
+      <hr class="my-4" />
+
+      <p>Stel: je wil een bepaald product graag hebben. Je koopt het bijv. op Marktplaats. Of iets wat bij een vriend of familie ligt, wil je graag terug. Maar de afstand die jullie van elkaar wonen is vervelend. (Je kunt een pakketdienst inschakelen, maar dat kost €6,50. En dat geeft weer uitstoot, wat we niet willen.) Vrienden Koerier stelt je in staat om op zoek te gaan naar iemand die toevallig dezelfde reis wil maken als jouw pakket, zodat diegene het voor je kan meenemen.</p>
+    </b-jumbotron>
     <div class="justify-content-start col-md-6 d-md-inline-block">
       <b-input-group placeholder="Zoeken" name="search" class="mt-3">
         <b-form-input @keyup.enter.native="searchPackage" v-model="search"></b-form-input>
@@ -145,18 +154,6 @@
                   class="form-control"
                   v-model="formData.message"
                 ></b-textarea>
-                <b-input
-                  v-show="false"
-                  type="hidden"
-                  v-model="formData.id"
-                  v-bind:value="packet.id"
-                ></b-input>
-                <b-input
-                  v-show="false"
-                  type="hidden"
-                  v-model="formData.user_id"
-                  v-bind:value="packet.user_id"
-                ></b-input>
               </b-form-group>
               <template v-slot:modal-footer>
                 <b-button
@@ -164,7 +161,7 @@
                   variant="outline-danger"
                   @click="$bvModal.hide('package-detail-form'+packet.id)"
                 >Sluiten</b-button>
-                <b-button v-on:click="takePackage()">Neem mee!</b-button>
+                <b-button @click="$bvModal.hide('package-detail-form'+packet.id)" v-on:click="takePackage(packet.id, packet.user_id)">Neem mee!</b-button>
               </template>
             </b-modal>
           </b-card>
@@ -217,11 +214,8 @@ export default {
     };
   },
   methods: {
-    takePackage: function() {
+    takePackage: function(pId, pUId) {
       if (this.loggedIn()) {
-        if (this.avg_confirmed == "1") {
-          this.avg_confirmed = 1;
-        }
 
         var config = {
           headers: {
@@ -232,23 +226,26 @@ export default {
           }
         };
 
-        var packageForm = new FormData();
+        // var packageForm = new FormData();
 
-        // append string
-        packageForm.append("id", this.formData.id);
-        packageForm.append("message", this.formData.message);
-        packageForm.append("user_id", this.formData.user_id);
+        // // append string
+        // packageForm.append("id", pId);
+        // packageForm.append("message", this.formData.message);
+        // packageForm.append("user_id", pUId);
+
+        var data = {
+            "id": pId,
+            "message": this.formData.message,
+            "user_id": pUId,
+        };
 
         axios
-          .patch("/package/invite", packageForm, config)
+          .patch("/package/invite", data , config)
           .then(response => {
             console.log(response);
           })
           .catch(error => {
             console.log(error);
-            console.log(bodyParameters);
-            console.log(this.file);
-            console.log(this.file.name);
           });
       } else {
         this.$router.push("login");
@@ -302,22 +299,9 @@ export default {
       }
     }
   },
-  //   created() {
-  //     this.fetchPackages();
-  //   },
-  //   methods: {
-  //     fetchPackages(page_URL) {
-  //       page_URL = page_URL || "https://pokeapi.co/api/v2/";
-  //       fetch(page_URL)
-  //         .then(res => res.json())
-  //         .then(data => {
-  //           this.packagesSend = res.data;
-  //         });
-  //     }
-  //   }
   created() {
     axios
-      .get(`https://api.vriendenkoerier.nl/api/packages/15`)
+      .get(`https://api.vriendenkoerier.nl/api/packages/30`)
       .then(response => {
         // JSON responses are automatically parsed.
         this.packagesSend = response.data.data;

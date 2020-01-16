@@ -87,7 +87,8 @@ export default {
           this.$cookie.set("token", this.access_token, 7);
           //   localStorage.setToken("acces_token", "fgrrwgwtgrggrrtg");
           // console.log(localStorage.getItem("acces_token"));
-          this.$router.push("profile");
+
+          this.$router.push("/");
         })
         .catch(response => {
           console.log("Couldn't create or get token");
@@ -105,6 +106,7 @@ export default {
           .split(";")
           .shift()
       );
+
       this.$router.push("profile");
     }
   }
