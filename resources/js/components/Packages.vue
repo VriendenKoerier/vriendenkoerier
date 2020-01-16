@@ -171,7 +171,10 @@
                   variant="outline-danger"
                   @click="$bvModal.hide('package-detail-form'+packet.id)"
                 >Sluiten</b-button>
-                <b-button v-on:click="takePackage()">Neem mee!</b-button>
+                <b-button
+                  v-on:click="takePackage()"
+                  @click="$bvModal.hide('package-detail-form'+packet.id)"
+                >Neem mee!</b-button>
               </template>
             </b-modal>
           </b-card>
