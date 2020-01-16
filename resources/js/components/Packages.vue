@@ -165,11 +165,32 @@
                   @click="$bvModal.hide('package-detail-form'+packet.id)"
               </template>
             </b-modal>
+            <b-modal
+              v-bind:title="'Ik wil '+packet.title+' brengen!'"
+              :header-bg-variant="modal.headerBgVariant"
+              :header-text-variant="modal.headerTextVariant"
+              :body-bg-variant="modal.bodyBgVariant"
+              :body-text-variant="modal.bodyTextVariant"
+              :footer-bg-variant="modal.footerBgVariant"
+              :footer-text-variant="modal.footerTextVariant"
+              v-bind:id="'package-detail-send'+packet.id"
+              centered
+            >
+              <p>{{takePackage}}</p>
+
+              <template v-slot:modal-footer>
+                <b-button
+                  size="sm"
+                  variant="outline-danger"
+                  @click="$bvModal.hide('package-detail-send'+packet.id)"
+                >Sluiten</b-button>
+              </template>
+            </b-modal>
           </b-card>
         </div>
       </div>
     </div>
-    <pagination></pagination>
+    <!-- <pagination></pagination> -->
   </div>
 </template>
 
@@ -227,6 +248,7 @@ export default {
           }
         };
 
+        var takePackage;
         // var packageForm = new FormData();
 
         // // append string
@@ -244,8 +266,13 @@ export default {
           .patch("/package/invite", data , config)
           .then(response => {
             console.log(response);
+            takePackage =
+              "Je aanvraag om het pakket te vervoeren is verstuurd, wacht op contact van de pakket eigenaar.";
           })
           .catch(error => {
+            takePackage =
+              "Helaas er is een fout opgetreden, probeer het later opnieuw.";
+
             console.log(error);
           });
       } else {
